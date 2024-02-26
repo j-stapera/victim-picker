@@ -12,7 +12,20 @@ public class VictimPicker {
     }
 
 
-    /*
+    public Victim chooseVictim(){
+        Collections.sort(victims);
+        Random rand = new Random();
+
+        int index = rand.nextInt(victims.size());
+
+        pickedToday.add(victims.get(index));
+        markAbsent(victims.get(index));
+
+        return victims.get(index);
+    }
+
+
+/*
         Method to choose two random victims, prioritizing those with
         the lowest number of picks. This is done by sorting the array of
         victims by number of picks and randomly generating two unique integers
@@ -20,6 +33,7 @@ public class VictimPicker {
         chooses two random students from the first half of the array when it is
         sorted in ascending order by number of picks.
      */
+
     public ArrayList<Victim> chooseTwo(){
         ArrayList<Victim> twoVictims = new ArrayList<>();
         Random rand = new Random();
