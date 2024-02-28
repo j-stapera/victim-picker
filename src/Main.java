@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Driver class for VictimPicker w/ GUI
+ */
 public class Main {
     public static void main(String[] args) {
 

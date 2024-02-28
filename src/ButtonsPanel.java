@@ -13,7 +13,10 @@ public class ButtonsPanel extends JPanel implements ActionListener {
 
 
 
-
+    /**
+     * Creates a set of 4 clickable buttons (add point, remove point, mark absent, start timer)
+     * !!IMPLEMENTATION OF ACTIONS MISSING!!
+     */
     ButtonsPanel(VictimPicker vp){
         this.victimPicker = vp;
 
