@@ -4,6 +4,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * An instance of this class creates a clickable JButton
+ * when clicked, it produces the name of a random person of type Victim
+ */
 public class VictimButton extends JButton implements ActionListener {
 
     VictimLabel victimLabel;
@@ -11,7 +15,14 @@ public class VictimButton extends JButton implements ActionListener {
     Victim victim;
     VictimPicker victimPicker = new VictimPicker();
 
-
+    /**
+     * Creates a victim button that when clicked returns the name of
+     * a randomly chosen victim
+     * @param victimLabel
+     * JLabel used to display name of victim
+     * @param students
+     * list of students available to pick from
+     */
     VictimButton(VictimLabel victimLabel, ArrayList<Victim> students){
 
         victimPicker.loadList(students);
@@ -34,7 +45,8 @@ public class VictimButton extends JButton implements ActionListener {
         return victim;
     }
 
-
+    // if button clicked is from this class
+    // then select a victim and display it
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource()==this){

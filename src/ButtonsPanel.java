@@ -13,7 +13,10 @@ public class ButtonsPanel extends JPanel {
     Victim victim;
 
 
-
+    /**
+     * Creates a set of 4 clickable buttons (add point, remove point, mark absent, start timer)
+     * !!IMPLEMENTATION OF ACTIONS MISSING!!
+     */
     ButtonsPanel(){
 
         this.setBounds(150,525,700,150);

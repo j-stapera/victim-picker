@@ -24,16 +24,16 @@ public class VictimPicker {
         return victims.get(index);
     }
 
-
-/*
-        Method to choose two random victims, prioritizing those with
-        the lowest number of picks. This is done by sorting the array of
-        victims by number of picks and randomly generating two unique integers
-        between 0 and half of the size of the array. So this method essentially
-        chooses two random students from the first half of the array when it is
-        sorted in ascending order by number of picks.
+    /**
+    *    Method to choose two random victims, prioritizing those with
+    *    the lowest number of picks. This is done by sorting the array of
+    *    victims by number of picks and randomly generating two unique integers
+    *    between 0 and half of the size of the array. So this method essentially
+    *    chooses two random students from the first half of the array when it is
+    *    sorted in ascending order by number of picks.
      */
-
+    // NOTE: Does this guarentee that all lowest picked are picked before higher picks happen?
+    //       Dunno if that's something we should care about - JS
     public ArrayList<Victim> chooseTwo(){
         ArrayList<Victim> twoVictims = new ArrayList<>();
         Random rand = new Random();

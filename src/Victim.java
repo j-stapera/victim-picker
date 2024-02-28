@@ -1,5 +1,11 @@
 import java.util.Date;
 import java.util.ArrayList;
+
+/**
+ * A class instance of a single victim that tracks:
+ * Name, section, score, date last picked, if absent, dates absent, num picks
+ * Contains a comparable interface that compares num picks of two victims
+ */
 public class Victim implements Comparable<Victim>{
 
     private String name;
@@ -10,6 +16,12 @@ public class Victim implements Comparable<Victim>{
     private ArrayList<Date> absences;
     private int numberOfPicks;
 
+    /**
+     * Creates a new victim with desired name
+     * all other information is pre-filled
+     * @param name
+     * name of victim
+     */
     //Constructor
     public Victim(String name){
         this.name = name;
@@ -76,6 +88,14 @@ public class Victim implements Comparable<Victim>{
         return absent;
     }
 
+    /**
+     * Bases equality on number of picks each victim has
+     * @param victim the object to be compared.
+     * @return
+     * 0 if victims are equal |
+     * 1 if this victim is greater |
+     * -1 if this victim is less
+     */
     //Method used to sort array of victims by the number of picks they currently have
     public int compareTo(Victim victim){
         if (numberOfPicks == victim.numberOfPicks)
