@@ -24,6 +24,13 @@ public class Victim implements Comparable<Victim>{
     public void setScore(int score){
         this.score = score;
     }
+    public void addScore(){
+        this.setScore(this.getScore() + 1);
+    }
+
+    public void subtractScore(){
+        this.setScore(this.getScore() - 1);
+    }
 
     public void setLastPicked(){
         this.lastPicked = new Date();

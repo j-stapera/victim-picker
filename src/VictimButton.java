@@ -12,9 +12,10 @@ public class VictimButton extends JButton implements ActionListener {
     VictimPicker victimPicker = new VictimPicker();
 
 
-    VictimButton(VictimLabel victimLabel, ArrayList<Victim> students){
+    VictimButton(VictimPicker victimPicker, VictimLabel victimLabel, ArrayList<Victim> students){
 
-        victimPicker.loadList(students);
+        this.victimPicker = victimPicker;
+        this.victimPicker.loadList(students);
         this.victimLabel = victimLabel;
 
         //victimButton = new JButton();
@@ -38,8 +39,8 @@ public class VictimButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource()==this){
-            victim = victimPicker.chooseVictim();
-            victimLabel.setText(victim.getName());
+            victimPicker.chooseVictim();
+            victimLabel.setText(victimPicker.getCurrentVictim().getName());
         }
 
     }
