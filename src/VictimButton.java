@@ -46,8 +46,10 @@ public class VictimButton extends JButton implements ActionListener {
         return victim;
     }
 
-    // if button clicked is from this class
-    // then select a victim and display it
+    /**
+     * if button clicked is from this class
+     * then select a victim and display it
+     */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource()==this){

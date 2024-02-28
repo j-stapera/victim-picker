@@ -1,11 +1,13 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Driver class for VictimPicker w/ GUI
  */
-public class Main {
+public class Main{
     public static void main(String[] args) {
 
         String[] names = {"Channing Andrews", "Danny Barmanbekov", "Nate Benson", "Nate Bittle",
@@ -42,8 +44,7 @@ public class Main {
         frame.add(panel);
         frame.add(volunteer);
 
-
-
-
     }
+
+
 }
