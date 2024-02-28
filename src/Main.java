@@ -26,9 +26,11 @@ public class Main {
             //students.get(i).setNumberOfPicks(rand.nextInt(10));
         }
 
+        VictimPicker victimPicker = new VictimPicker();
+
         VictimLabel label = new VictimLabel();
-        VictimButton button = new VictimButton(label, students);
-        ButtonsPanel panel = new ButtonsPanel();
+        VictimButton button = new VictimButton(victimPicker, label, students);
+        ButtonsPanel panel = new ButtonsPanel(victimPicker);
         VolunteerButton volunteer = new VolunteerButton();
 
         Frame frame = new Frame();

@@ -2,6 +2,7 @@ import java.util.*;
 public class VictimPicker {
 
     private ArrayList<Victim> victims;
+    private Victim currentVictim;
     private ArrayList<Victim> pickedToday;
     private ArrayList<Victim> absentToday;
 
@@ -21,7 +22,13 @@ public class VictimPicker {
         pickedToday.add(victims.get(index));
         markAbsent(victims.get(index));
 
-        return victims.get(index);
+        currentVictim = victims.get(index);
+        return currentVictim;
+    }
+
+    public Victim getCurrentVictim()
+    {
+        return currentVictim;
     }
 
 
