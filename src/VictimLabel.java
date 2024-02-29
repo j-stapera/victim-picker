@@ -22,4 +22,9 @@ public class VictimLabel extends JLabel {
 
     }
 
+    // When text changes, call updateText to make changes appear on screen
+    public void updateText(Victim victim){
+        this.setText(victim.getName() + " - " + victim.getScore() + " pts");
+    }
+
 }

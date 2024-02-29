@@ -10,24 +10,23 @@ import java.util.Random;
  */
 public class VictimButton extends JButton implements ActionListener {
 
-    VictimLabel victimLabel;
-    JButton victimButton;
-    Victim victim;
-    VictimPicker victimPicker = new VictimPicker();
+    private final VictimLabel victimLabel;
+    private final VictimPicker victimPicker;
 
     /**
      * Creates a victim button that when clicked returns the name of
      * a randomly chosen victim
-     * @param victimLabel
+     * @param vp
+     * the current victim picker being used across all classes within the Jframe
+     * @param vl
      * JLabel used to display name of victim
      * @param students
      * list of students available to pick from
      */
-    VictimButton(VictimPicker victimPicker, VictimLabel victimLabel, ArrayList<Victim> students){
-
-        this.victimPicker = victimPicker;
+    VictimButton(VictimPicker vp, VictimLabel vl, ArrayList<Victim> students){
+        this.victimPicker = vp;
         this.victimPicker.loadList(students);
-        this.victimLabel = victimLabel;
+        this.victimLabel = vl;
 
         //victimButton = new JButton();
         this.setBounds(400,350,200,100);
@@ -35,16 +34,13 @@ public class VictimButton extends JButton implements ActionListener {
         this.addActionListener(this);
         this.setText("Choose Victim");
 
+        // guarenteed first victim, causes errors otherwise
+        vp.chooseVictim();
+        victimLabel.updateText(vp.getCurrentVictim());
+
 
     }
 
-    /*
-    the buttonspanel class would need the current victim from
-    this class in order to add/substract from score and mark absent
-     */
-    public Victim getCurrentVictim(){
-        return victim;
-    }
 
     /**
      * if button clicked is from this class
@@ -54,7 +50,8 @@ public class VictimButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource()==this){
             victimPicker.chooseVictim();
-            victimLabel.setText(victimPicker.getCurrentVictim().getName());
+
+            victimLabel.updateText(victimPicker.getCurrentVictim());
         }
 
     }

@@ -8,7 +8,7 @@ import java.util.Random;
  * Driver class for VictimPicker w/ GUI
  */
 public class Main{
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         String[] names = {"Channing Andrews", "Danny Barmanbekov", "Nate Benson", "Nate Bittle",
                 "Excalibur Bunker", "Vincent Climer", "Nicholas Colet", "Fabrice Faustin", "Seth Garner",
@@ -33,16 +33,21 @@ public class Main{
 
         VictimPicker victimPicker = new VictimPicker();
 
-        VictimLabel label = new VictimLabel();
-        VictimButton button = new VictimButton(victimPicker, label, students);
-        ButtonsPanel panel = new ButtonsPanel(victimPicker);
+        VictimLabel victimLabel = new VictimLabel();
+        TimerLabel timerLabel = new TimerLabel();
+
+        VictimButton button = new VictimButton(victimPicker, victimLabel, students);
+        ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel,timerLabel);
         VolunteerButton volunteer = new VolunteerButton();
+
 
         Frame frame = new Frame();
         frame.add(button);
-        frame.add(label);
+        frame.add(victimLabel);
         frame.add(panel);
         frame.add(volunteer);
+        frame.add(timerLabel);
+
 
     }
 
