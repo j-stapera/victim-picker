@@ -5,17 +5,22 @@ import java.awt.event.ActionListener;
 
 public class ButtonsPanel extends JPanel implements ActionListener {
 
-    JButton addPointButton;
-    JButton removePointButton;
-    JButton markAbsentButton;
-    JButton startTimerButton;
-    VictimPicker victimPicker;
+    private final JButton addPointButton;
+    private final JButton removePointButton;
+    private final JButton markAbsentButton;
+    private final TimerButtonPanel startTimerButton;
+    private final VictimPicker victimPicker;
+    private final VictimLabel victimLabel;
 
 
 
-
-    ButtonsPanel(VictimPicker vp){
+    /**
+     * Creates a set of 4 clickable buttons (add point, remove point, mark absent, start timer)
+     * !!IMPLEMENTATION OF ACTIONS MISSING!!
+     */
+    ButtonsPanel(VictimPicker vp, VictimLabel vl, TimerLabel timerLabel){
         this.victimPicker = vp;
+        this.victimLabel = vl;
 
         this.setBounds(150,525,700,150);
         this.setLayout(null);
@@ -37,9 +42,8 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         markAbsentButton.setBounds(360,50,150,50);
         markAbsentButton.addActionListener(this);
 
-        startTimerButton = new JButton("Start Timer");
-        startTimerButton.setFocusable(false);
-        startTimerButton.setBounds(530,50,150,50);
+        startTimerButton = new TimerButtonPanel(timerLabel);
+        startTimerButton.setBounds(530,25,150,100);
 
         this.add(addPointButton);
         this.add(removePointButton);
@@ -55,14 +59,13 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource() == addPointButton){
             victimPicker.getCurrentVictim().addScore();
-            System.out.println(victimPicker.getCurrentVictim().getName() + ": " +
-                    victimPicker.getCurrentVictim().getScore());
+            victimLabel.updateText(victimPicker.getCurrentVictim());
+
         }
         if(actionEvent.getSource() == removePointButton)
         {
             victimPicker.getCurrentVictim().subtractScore();
-            System.out.println(victimPicker.getCurrentVictim().getName() + ": " +
-                    victimPicker.getCurrentVictim().getScore());
+            victimLabel.updateText(victimPicker.getCurrentVictim());
         }
         if(actionEvent.getSource() == markAbsentButton){
             victimPicker.getCurrentVictim().addAbsence();
