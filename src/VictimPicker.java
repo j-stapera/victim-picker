@@ -1,4 +1,6 @@
+import javax.swing.*;
 import java.util.*;
+import java.awt.*;
 public class VictimPicker {
 
     private ArrayList<Victim> victims;
@@ -12,6 +14,10 @@ public class VictimPicker {
         absentToday = new ArrayList<>();
     }
 
+    //when volunteering set the victim maually
+    public void setCurrentVictim(Victim currentVictim) {
+        this.currentVictim = currentVictim;
+    }
 
     public Victim chooseVictim(){
         Collections.sort(victims);
@@ -76,6 +82,14 @@ public class VictimPicker {
         //Return victims
         return twoVictims;
     }
+
+    //add volunteer victim to the picked to day list
+    public void volunteerPT(Victim student){
+
+        pickedToday.add(student);
+
+    }
+
 
     //Increment the score of those who were chosen and update when they were last picked
     public void increaseScore(int points){
