@@ -89,10 +89,6 @@ public class TimerLogic {
         timerLabel.updateTime(currTime);
     }
 
-    public int getCurrTime(){
-        return currTime;
-    }
-
     public boolean isRunning(){
         return timer.isRunning();
     }

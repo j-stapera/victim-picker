@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -73,17 +72,12 @@ public class ButtonsPanel extends JPanel implements ActionListener {
             // UGLY? Probably
             // sets text to "Marked!" then waits 1 sec then returns to original text
             markAbsentButton.setText("Marked!");
-            Timer timer = new Timer( 1000, new ActionListener(){
-                @Override
-                public void actionPerformed( ActionEvent e ){
-                    markAbsentButton.setText("Mark Absent");
-                }
-            } );
+            Timer timer = new Timer( 1000, e -> markAbsentButton.setText("Mark Absent"));
             timer.setRepeats( false );
             timer.start();
 
 
         }
-    };
+    }
 
 }

@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class TimerLabel extends JLabel{
@@ -8,7 +7,6 @@ public class TimerLabel extends JLabel{
         // but it'll work - JS
         this.setText("<html>Time Left:<br/>0s</html>");
         this.setBounds(625,340,220,150);
-        //this.setBorder(new LineBorder(Color.GRAY, 1));
         this.setHorizontalAlignment(JLabel.LEFT);
         this.setVerticalAlignment(JLabel.NORTH);
         this.setFont(new Font("Times New Roman", Font.PLAIN, 40));
@@ -18,13 +16,13 @@ public class TimerLabel extends JLabel{
 
     // When text changes, call updateText to make changes appear on screen
     public void updateTime(int time){
-        this.setText("<html>Time Left:<br/>" + Integer.toString(time) + "s</html>");
+        this.setText("<html>Time Left:<br/>" + time + "s</html>");
     }
 
     //show text "Time!" when timer reaches a desired point
     //NOTE: I wanted this to flash via Thread.sleep() but it refused to work. Should find
     //      another way to do it since it would look cool - JS
     public void endTime(int time){
-        this.setText("<html>Time Left:<br/>" + Integer.toString(time) + "s<br/><i>Time!<i/></html>");
+        this.setText("<html>Time Left:<br/>" + time + "s<br/><i>Time!<i/></html>");
     }
 }
