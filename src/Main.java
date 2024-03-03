@@ -36,7 +36,7 @@ public class Main{
 
         VictimButton button = new VictimButton(victimPicker, victimLabel, students);
         ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel,timerLabel);
-        VolunteerButton volunteer = new VolunteerButton();
+        VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel);
 
 
         Frame frame = new Frame();
