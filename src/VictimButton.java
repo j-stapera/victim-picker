@@ -34,7 +34,7 @@ public class VictimButton extends JButton implements ActionListener {
         this.addActionListener(this);
         this.setText("Choose Victim");
 
-        // guarenteed first victim, causes errors otherwise
+        // guaranteed first victim, causes errors otherwise
         vp.chooseVictim();
         victimLabel.updateText(vp.getCurrentVictim());
 

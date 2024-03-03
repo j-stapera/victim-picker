@@ -26,8 +26,8 @@ public class Main{
             Victims class
         */
         ArrayList<Victim> students = new ArrayList<>();
-        for(int i = 0; i < names.length; i++){
-            students.add(new Victim(names[i]));     //instantiates new victim objects
+        for (String name : names) {
+            students.add(new Victim(name));     //instantiates new victim objects
             //students.get(i).setNumberOfPicks(rand.nextInt(10));
         }
 
