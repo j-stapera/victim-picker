@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,7 +21,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         this.victimPicker = vp;
         this.victimLabel = vl;
 
-        this.setBounds(150,525,700,150);
+        this.setBounds(125,525,750,150);
         this.setLayout(null);
         //this.setBackground(Color.BLACK);
 
@@ -43,7 +42,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         markAbsentButton.addActionListener(this);
 
         startTimerButton = new TimerButtonPanel(timerLabel);
-        startTimerButton.setBounds(530,25,150,100);
+        startTimerButton.setBounds(530,25,200,100);
 
         this.add(addPointButton);
         this.add(removePointButton);
@@ -69,7 +68,16 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         }
         if(actionEvent.getSource() == markAbsentButton){
             victimPicker.getCurrentVictim().addAbsence();
+
+            // UGLY? Probably
+            // sets text to "Marked!" then waits 1 sec then returns to original text
+            markAbsentButton.setText("Marked!");
+            Timer timer = new Timer( 1000, e -> markAbsentButton.setText("Mark Absent"));
+            timer.setRepeats( false );
+            timer.start();
+
+
         }
-    };
+    }
 
 }
