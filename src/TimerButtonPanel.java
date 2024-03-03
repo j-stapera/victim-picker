@@ -8,14 +8,14 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
     private final JButton addTimeButton;
     private final JButton removeTimeButton;
     private final TimerLabel timerLabel;
-    private final Timer timer;
+    private final TimerLogic timerLogic;
 
     TimerButtonPanel(TimerLabel tl){
         timerLabel = tl;
-        timerButton = new JButton("Start Timer");
+        timerButton = new JButton("Start TimerLogic");
         addTimeButton = new JButton("+");
         removeTimeButton = new JButton("-");
-        timer = new Timer(timerLabel);
+        timerLogic = new TimerLogic(timerLabel);
 
         timerButton.addActionListener(this);
         addTimeButton.addActionListener(this);
@@ -33,19 +33,19 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == timerButton){
-            if (timer.isRunning()){
-                timer.stopTimer();
+            if (timerLogic.isRunning()){
+                timerLogic.stopTimer();
             } else {
-                timer.startTimer();
+                timerLogic.startTimer();
             }
         }
         if (e.getSource() == addTimeButton)
         {
-            timer.addTime();
+            timerLogic.addTime();
         }
         if (e.getSource() == removeTimeButton){
-            timer.removeTime();
+            timerLogic.removeTime();
         }
-    };
+    }
 
 }
