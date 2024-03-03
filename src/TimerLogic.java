@@ -17,8 +17,8 @@ public class TimerLogic {
      * timer label attached to timer
      */
     TimerLogic(TimerLabel tl){
-        this.currTime = 60;
         this.startTime = 60;
+        this.currTime = this.startTime;
         this.timerLabel = tl;
         timerLabel.updateTime(startTime);
         timeIncrement = 5;
@@ -31,8 +31,9 @@ public class TimerLogic {
                     currTime -= 1;
                     timerLabel.updateTime(currTime);
                 } else {
+                    timerLabel.endTime(currTime);
                     timer.stop();
-                    System.out.println("timer complete");
+
                 }
             }
         });
@@ -40,28 +41,37 @@ public class TimerLogic {
     }
 
     public void addTime(){
-        startTime += timeIncrement; // add 30s to start time
-        currTime += timeIncrement; //add 30 to running time
+        if (timer.isRunning()){
+            currTime += timeIncrement; //add 30 to running time
+        } else {
+            startTime += timeIncrement; // add 30s to start time
+            currTime = startTime; //update currTime
+        }
         timerLabel.updateTime(currTime);
     }
 
     public void removeTime(){
-        //prevent currTime from going negative
-        if (currTime > 0 && (currTime - timeIncrement) > 0) {
-            currTime -= timeIncrement; // remove timeIncrement amt from running time
-          //if curr time goes negative then set to 0
-        } else if ((currTime - timeIncrement) <= 0){
-            currTime = 0;
+        //makes it so when timer is running and time is decreased
+        //that resetTimer can still reset back to the original time
+        if(timer.isRunning()) {
+            //prevent currTime from going negative
+            if (currTime > 0 && (currTime - timeIncrement) > 0) {
+                currTime -= timeIncrement; // remove timeIncrement amt from running time
+                //if curr time goes negative then set to 0
+            } else if ((currTime - timeIncrement) <= 0) {
+                currTime = 0;
+            }
+        } else {
+            //prevent startTime from going negative
+            if (startTime > 0 && (startTime - timeIncrement) > 0) {
+                startTime -= timeIncrement; // remove timeIncrement from start time
+                //if startTime goes negative then set to 0
+            } else if ((startTime - timeIncrement) <= 0) {
+                startTime = 0;
+            }
+            currTime = startTime; //update currTime to match startTime
         }
         timerLabel.updateTime(currTime);
-
-        //prevent startTime from going negative
-        if (startTime > 0 && (startTime - timeIncrement) > 0) {
-            startTime -= timeIncrement; // remove timeIncrement from start time
-          //if startTime goes negative then set to 0
-        } else if ((startTime - timeIncrement) <= 0){
-            startTime = 0;
-        }
     }
 
     public void startTimer(){
