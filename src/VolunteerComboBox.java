@@ -43,7 +43,6 @@ public class VolunteerComboBox extends JButton implements ActionListener {
         if (e.getSource() == volunteerCB) {
             // Get the selected item from the JComboBox
             String selectedName = (String) volunteerCB.getSelectedItem();
-            System.out.println(selectedName);
             //search for the corresponding student in the array list
             for (Victim student : students) {
                 if (student.getName().equals(selectedName)) {
