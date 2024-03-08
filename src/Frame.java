@@ -11,6 +11,8 @@ public class Frame extends JFrame  {
         this.setSize(1000,750);
         this.setLayout(null);
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
     }
 }
