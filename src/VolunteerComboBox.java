@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class VolunteerComboBox extends JButton implements ActionListener {
     /**
      * Creates a ComboBox = A component that combineds a button or a editable field and a drop-down list
-     * !!IMPLEMENTATION MISSING!!
      */
     ArrayList<Victim> students;
 

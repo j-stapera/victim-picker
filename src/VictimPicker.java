@@ -14,7 +14,7 @@ public class VictimPicker {
         absentToday = new ArrayList<>();
     }
 
-    //when volunteering set the victim maually
+    //when volunteering set the victim manually
     public void setCurrentVictim(Victim currentVictim) {
         this.currentVictim = currentVictim;
     }
@@ -45,8 +45,8 @@ public class VictimPicker {
     *    chooses two random students from the first half of the array when it is
     *    sorted in ascending order by number of picks.
      */
-    // NOTE: Does this guarentee that all lowest picked are picked before higher picks happen?
-    //       Dunno if that's something we should care about - JS
+    // TODO: fix picking behavior to have no repeats
+    //       until unpicked students have been picked
     public ArrayList<Victim> chooseTwo(){
         ArrayList<Victim> twoVictims = new ArrayList<>();
         Random rand = new Random();
@@ -83,7 +83,7 @@ public class VictimPicker {
         return twoVictims;
     }
 
-    //add volunteer victim to the picked to day list
+    //add volunteer victim to the picked today list
     public void volunteerPT(Victim student){
 
         pickedToday.add(student);

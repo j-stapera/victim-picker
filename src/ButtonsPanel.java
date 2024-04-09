@@ -7,16 +7,18 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     private final JButton addPointButton;
     private final JButton removePointButton;
     private final JButton markAbsentButton;
-    private final TimerButtonPanel startTimerButton;
+    private final TimerButtonPanel timerButtons;
     private final VictimPicker victimPicker;
     private final VictimLabel victimLabel;
 
 
 
     /**
-     * Creates a set of 4 clickable buttons (add point, remove point, mark absent, start timer)
-     * !!IMPLEMENTATION OF ACTIONS MISSING!!
+     * Creates a set of 4 clickable buttons (add point, remove point, mark absent, timer panel)
+     * see TimerButtonPanel for info on timer panel
      */
+    // NOTE: may want to move timer panel out of buttons panel, at least in its declaration
+    //       instead possibly consider having it added to the panel in main
     ButtonsPanel(VictimPicker vp, VictimLabel vl, TimerLabel timerLabel){
         this.victimPicker = vp;
         this.victimLabel = vl;
@@ -41,13 +43,14 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         markAbsentButton.setBounds(360,50,150,50);
         markAbsentButton.addActionListener(this);
 
-        startTimerButton = new TimerButtonPanel(timerLabel);
-        startTimerButton.setBounds(530,25,200,100);
+        timerButtons = new TimerButtonPanel(timerLabel);
+        timerButtons.setBounds(530,25,200,100);
 
+        //adds buttons to a single panel for manipulation
         this.add(addPointButton);
         this.add(removePointButton);
         this.add(markAbsentButton);
-        this.add(startTimerButton);
+        this.add(timerButtons);
 
 
     }
@@ -56,16 +59,20 @@ public class ButtonsPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        // increments the score for the curr victim, forces victimlabel to redraw
         if(actionEvent.getSource() == addPointButton){
             victimPicker.getCurrentVictim().addScore();
             victimLabel.updateText(victimPicker.getCurrentVictim());
 
         }
+        //decrements the score of curr victim, forces victimlabel to redraw
         if(actionEvent.getSource() == removePointButton)
         {
             victimPicker.getCurrentVictim().subtractScore();
             victimLabel.updateText(victimPicker.getCurrentVictim());
         }
+        // adds absence to absence list for curr victim
+        // also changes the absent button to "Marked!" for user feedback, appears for 1 second
         if(actionEvent.getSource() == markAbsentButton){
             victimPicker.getCurrentVictim().addAbsence();
 
