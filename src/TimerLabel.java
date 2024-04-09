@@ -3,7 +3,8 @@ import java.awt.*;
 
 public class TimerLabel extends JLabel{
     /**
-     *
+     * A label that is provided to a timer in order
+     * to be displayed in a GUI
      */
     TimerLabel(){
         // would like to have time center under "Time left"

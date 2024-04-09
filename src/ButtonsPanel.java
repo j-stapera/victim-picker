@@ -43,6 +43,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         markAbsentButton.setBounds(360,50,150,50);
         markAbsentButton.addActionListener(this);
 
+        // This is a button panel containing a +,-, reset time, start/stop time buttons
         timerButtons = new TimerButtonPanel(timerLabel);
         timerButtons.setBounds(530,25,200,100);
 

@@ -39,10 +39,10 @@ public class VictimPicker {
 
     /**
     *    Method to choose two random victims, prioritizing those with
-    *    the lowest number of picks. This is done by sorting the array of
-    *    victims by number of picks and randomly generating two unique integers
-    *    between 0 and half of the size of the array. So this method essentially
-    *    chooses two random students from the first half of the array when it is
+    *    the lowest number of picks. <p>
+     *   Done by sorting the array of victims by number of picks and randomly generating two unique integers
+    *    between 0 and half of the size of the array. <p>
+     *   Essentially chooses two random students from the first half of the array when it is
     *    sorted in ascending order by number of picks.
      */
     // TODO: fix picking behavior to have no repeats
@@ -74,7 +74,7 @@ public class VictimPicker {
 
         //Add all absent students to 'absentToday' array
         for(int i = 0; i < victims.size(); i++){
-            if(victims.get(i).ifAbsent()){
+            if(victims.get(i).isAbsent()){
                 markAbsent(victims.get(i));
             }
         }
@@ -92,6 +92,7 @@ public class VictimPicker {
 
 
     //Increment the score of those who were chosen and update when they were last picked
+    // TODO: May not be needed anymore??
     public void increaseScore(int points){
         for(int i = 0; i < pickedToday.size(); i++){
             pickedToday.get(i).setScore(pickedToday.get(i).getScore() + 1);
