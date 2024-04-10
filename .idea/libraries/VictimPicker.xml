@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="VictimPicker">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/victimPicker_jar/VictimPicker.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
