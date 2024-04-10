@@ -8,6 +8,7 @@ import java.util.Random;
 public class Main{
     public static void main(String[] args){
 
+        // TODO: Replace with a file import
         String[] names = {"Channing Andrews", "Danny Barmanbekov", "Nate Benson", "Nate Bittle",
                 "Excalibur Bunker", "Vincent Climer", "Nicholas Colet", "Fabrice Faustin", "Seth Garner",
                 "Nicholas Gilleran", "Hunter Henderson", "Akhil John Bosco", "Jeremiah Jordan", "Bret Kagebein",
@@ -17,7 +18,8 @@ public class Main{
                 "Josh Stapera", "Justin Stauffer", "Kevin Stinnett", "Ethan Stucker", "Dakotah Sutton-Rodriguez",
                 "Heather Watson"};
 
-        Random rand = new Random();
+        Random rand = new Random(); // purpose??
+
         /*Create new arraylist of students and store each name from roster in array
             Each student in the roster is randomly generated a number of picks
             to test the sorting algorithm used in the 'chooseTwo' method of the
@@ -29,16 +31,19 @@ public class Main{
             //students.get(i).setNumberOfPicks(rand.nextInt(10));
         }
 
-        VictimPicker victimPicker = new VictimPicker();
+        //driver objects
+        VictimPicker victimPicker = new VictimPicker(); // main driver for everything
 
-        VictimLabel victimLabel = new VictimLabel();
-        TimerLabel timerLabel = new TimerLabel();
+        // text display objects
+        VictimLabel victimLabel = new VictimLabel(); // name of victim
+        TimerLabel timerLabel = new TimerLabel(); // text for timer
 
-        VictimButton button = new VictimButton(victimPicker, victimLabel, students);
-        ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel,timerLabel);
-        VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel);
+        // interactable objects
+        VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
+        ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel,timerLabel); // add point, remove point, timer buttons
+        VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
 
-
+        // add them to a central frame
         Frame frame = new Frame();
         frame.add(button);
         frame.add(victimLabel);
