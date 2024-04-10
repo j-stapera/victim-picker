@@ -1,4 +1,6 @@
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -50,6 +52,15 @@ public class Main{
         frame.add(panel);
         frame.add(volunteer);
         frame.add(timerLabel);
+
+        // Creates a window listener so that when frame is close
+        // an action is performed, intended for  exporting victim list upon exit
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e){
+                e.getWindow().dispose();
+            }
+        });
 
 
     }
