@@ -74,6 +74,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         }
         // adds absence to absence list for curr victim
         // also changes the absent button to "Marked!" for user feedback, appears for 1 second
+        // TODO: Make this a togglable action, be able to remove absence if button is accidently clicked
         if(actionEvent.getSource() == markAbsentButton){
             victimPicker.getCurrentVictim().addAbsence();
 

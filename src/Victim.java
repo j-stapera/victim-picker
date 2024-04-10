@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Victim implements Comparable<Victim>{
 // TODO: Needs a interface called Victim and Exportable, too many dependencies on this class
+    //TODO: Make a method to export this data
     private String name;
     private static final int SECTION = 22199;
     private int score;
