@@ -12,6 +12,7 @@ public class VictimButton extends JButton implements ActionListener {
 
     private final VictimLabel victimLabel;
     private final VictimPicker victimPicker;
+    private final Actions actions;
 
     /**
      * Creates a victim button that when clicked returns the name of
@@ -27,6 +28,7 @@ public class VictimButton extends JButton implements ActionListener {
         this.victimPicker = vp;
         this.victimPicker.loadList(students);
         this.victimLabel = vl;
+        this.actions = new Actions(vp, vl, new TimerLogic(new TimerLabel()));
 
         //victimButton = new JButton();
         this.setBounds(400,350,200,100);
@@ -48,12 +50,9 @@ public class VictimButton extends JButton implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(actionEvent.getSource()==this){
-            victimPicker.chooseVictim();
-
-            victimLabel.updateText(victimPicker.getCurrentVictim());
+        if (actionEvent.getSource() == this) {
+            actions.selectVictim();
         }
-
     }
 
 

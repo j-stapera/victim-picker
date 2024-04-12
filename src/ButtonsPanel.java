@@ -10,7 +10,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     private final TimerButtonPanel timerButtons;
     private final VictimPicker victimPicker;
     private final VictimLabel victimLabel;
-
+    private final Actions actions;
 
 
     /**
@@ -22,7 +22,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     ButtonsPanel(VictimPicker vp, VictimLabel vl, TimerLabel timerLabel){
         this.victimPicker = vp;
         this.victimLabel = vl;
-
+        this.actions = new Actions(vp, vl, new TimerLogic(timerLabel));
         this.setBounds(125,525,750,150);
         this.setLayout(null);
         //this.setBackground(Color.BLACK);
@@ -60,32 +60,14 @@ public class ButtonsPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        // increments the score for the curr victim, forces victimlabel to redraw
-        if(actionEvent.getSource() == addPointButton){
-            victimPicker.getCurrentVictim().addScore();
-            victimLabel.updateText(victimPicker.getCurrentVictim());
-
+        if (actionEvent.getSource() == addPointButton) {
+            actions.addPoint();
         }
-        //decrements the score of curr victim, forces victimlabel to redraw
-        if(actionEvent.getSource() == removePointButton)
-        {
-            victimPicker.getCurrentVictim().subtractScore();
-            victimLabel.updateText(victimPicker.getCurrentVictim());
+        if (actionEvent.getSource() == removePointButton) {
+            actions.removePoint();
         }
-        // adds absence to absence list for curr victim
-        // also changes the absent button to "Marked!" for user feedback, appears for 1 second
-        // TODO: Make this a togglable action, be able to remove absence if button is accidently clicked
-        if(actionEvent.getSource() == markAbsentButton){
-            victimPicker.getCurrentVictim().addAbsence();
-
-            // UGLY? Probably
-            // sets text to "Marked!" then waits 1 sec then returns to original text
-            markAbsentButton.setText("Marked!");
-            Timer timer = new Timer( 1000, e -> markAbsentButton.setText("Mark Absent"));
-            timer.setRepeats( false );
-            timer.start();
-
-
+        if (actionEvent.getSource() == markAbsentButton) {
+            actions.markAbsent();
         }
     }
 

@@ -10,6 +10,7 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
     private final JButton removeTimeButton;
     private final TimerLabel timerLabel;
     private final TimerLogic timerLogic;
+    private final Actions actions;
 
     /**
      * Creates a panel with +,-,reset timer, start/stop timer buttons
@@ -19,6 +20,7 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
      */
     TimerButtonPanel(TimerLabel tl){
         timerLabel = tl;
+        this.actions = new Actions(new VictimPicker(), new VictimLabel(), new TimerLogic(tl));
 
         // buttons for panel
         startTimerButton = new JButton("<html>Start<br/>Timer<html/>");
@@ -54,32 +56,17 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // toggles timer on and off
-        // updates start button accordingly for user feedback
-        if (e.getSource() == startTimerButton){
-            if (timerLogic.isRunning()){
-                timerLogic.stopTimer();
-                startTimerButton.setText("<html>Start<br/>Timer<html/>");
-            } else {
-                timerLogic.startTimer();
-                startTimerButton.setText("<html>Stop<br/>Timer<html/>");
-            }
+        if (e.getSource() == startTimerButton) {
+            actions.toggleTimer();
         }
-        // increments time by amount specified in timerLogic
-        if (e.getSource() == addTimeButton)
-        {
-            timerLogic.addTime();
+        if (e.getSource() == addTimeButton) {
+            actions.addTime();
         }
-        // decrements time by amount specified in timerLogic
-        if (e.getSource() == removeTimeButton){
-            timerLogic.removeTime();
+        if (e.getSource() == removeTimeButton) {
+            actions.removeTime();
         }
-        // stops timer and then resets it to time before timer began
-        // NOTE: increment and decrement when timer is
-        //       running does not affect the reset time
-        if (e.getSource() == resetTimerButton){
-            timerLogic.stopTimer();
-            timerLogic.resetTimer();
+        if (e.getSource() == resetTimerButton) {
+            actions.resetTimer();
         }
     }
 

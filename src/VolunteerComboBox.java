@@ -14,6 +14,7 @@ public class VolunteerComboBox extends JButton implements ActionListener {
 
     private final VictimPicker victimPicker;
     private final VictimLabel victimLabel;
+    private final Actions actions;
 
     // consider changing to a JCheckbox since it would be similar behavior but less backend
     // OR when button is clicked JIcon of checkmark appears
@@ -47,25 +48,15 @@ public class VolunteerComboBox extends JButton implements ActionListener {
         this.setFocusable(false);
 
         volunteerCB.addActionListener(this);
+        this.actions = new Actions(vp, vl, new TimerLogic(new TimerLabel()));
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == volunteerCB) {
-            // Get the selected item from the JComboBox
             String selectedName = (String) volunteerCB.getSelectedItem();
-            //search for the corresponding student in the array list
-            for (Victim student : students) {
-                if (student.getName().equals(selectedName)) {
-                    victim = student;
-                    victimPicker.setCurrentVictim(victim);
-                    victimPicker.volunteerPT(victim);
-                    //victimLabel.setText(victim.getName() + " - " + victim.getScore() + " pts");
-                    victimLabel.updateText(victim);
-                    break; // Exit the loop once the student is found
-                }
-            }
+            actions.selectVolunteer(selectedName, students);
         }
     }
 }
