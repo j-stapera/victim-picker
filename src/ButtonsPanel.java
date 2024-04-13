@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,7 +11,6 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     private final TimerButtonPanel timerButtons;
     private final VictimPicker victimPicker;
     private final VictimLabel victimLabel;
-    private final Actions actions;
 
 
     /**
@@ -22,7 +22,6 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     ButtonsPanel(VictimPicker vp, VictimLabel vl, TimerLabel timerLabel){
         this.victimPicker = vp;
         this.victimLabel = vl;
-        this.actions = new Actions(vp, vl, new TimerLogic(timerLabel));
         this.setBounds(125,525,750,150);
         this.setLayout(null);
         //this.setBackground(Color.BLACK);
@@ -61,13 +60,13 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == addPointButton) {
-            actions.addPoint();
+            Actions.addPoint();
         }
         if (actionEvent.getSource() == removePointButton) {
-            actions.removePoint();
+            Actions.removePoint();
         }
         if (actionEvent.getSource() == markAbsentButton) {
-            actions.markAbsent();
+            Actions.markAbsent();
         }
     }
 

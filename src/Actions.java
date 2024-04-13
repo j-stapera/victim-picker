@@ -1,36 +1,33 @@
 import java.util.ArrayList;
 
 public class Actions {
-    private final VictimPicker victimPicker;
-    private final VictimLabel victimLabel;
-    private final TimerLogic timerLogic;
+    private static final VictimPicker victimPicker = new VictimPicker();
+    private static final VictimLabel victimLabel = new VictimLabel();
+    private static final TimerLabel timerLabel = new TimerLabel();
+    private static final TimerLogic timerLogic = new TimerLogic(timerLabel);
+
 
     /**
      * Creates a set of 4 clickable buttons (add point, remove point, mark absent, timer panel)
      * see TimerButtonPanel for info on timer panel
      */
 
-    public Actions(VictimPicker vp, VictimLabel vl, TimerLogic tl) {
-        this.victimPicker = vp;
-        this.victimLabel = vl;
-        this.timerLogic = tl;
-    }
-
-    public void addPoint() {
+    
+    public static void addPoint() {
         victimPicker.getCurrentVictim().addScore();
         victimLabel.updateText(victimPicker.getCurrentVictim());
     }
 
-    public void removePoint() {
+    public static void removePoint() {
         victimPicker.getCurrentVictim().subtractScore();
         victimLabel.updateText(victimPicker.getCurrentVictim());
     }
 
-    public void markAbsent() {
+    public static void markAbsent() {
         victimPicker.getCurrentVictim().addAbsence();
     }
 
-    public void toggleTimer() {
+    public static void toggleTimer() {
         if (timerLogic.isRunning()) {
             timerLogic.stopTimer();
         } else {
@@ -38,25 +35,25 @@ public class Actions {
         }
     }
 
-    public void addTime() {
+    public static void addTime() {
         timerLogic.addTime();
     }
 
-    public void removeTime() {
+    public static void removeTime() {
         timerLogic.removeTime();
     }
 
-    public void resetTimer() {
+    public static void resetTimer() {
         timerLogic.stopTimer();
         timerLogic.resetTimer();
     }
 
-    public void selectVictim() {
+    public static void selectVictim() {
         victimPicker.chooseVictim();
         victimLabel.updateText(victimPicker.getCurrentVictim());
     }
 
-    public void selectVolunteer(String selectedName, ArrayList<Victim> students) {
+    public static void selectVolunteer(String selectedName, ArrayList<Victim> students) {
         for (Victim student : students) {
             if (student.getName().equals(selectedName)) {
                 victimPicker.setCurrentVictim(student);

@@ -10,7 +10,6 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
     private final JButton removeTimeButton;
     private final TimerLabel timerLabel;
     private final TimerLogic timerLogic;
-    private final Actions actions;
 
     /**
      * Creates a panel with +,-,reset timer, start/stop timer buttons
@@ -20,8 +19,6 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
      */
     TimerButtonPanel(TimerLabel tl){
         timerLabel = tl;
-        this.actions = new Actions(new VictimPicker(), new VictimLabel(), new TimerLogic(tl));
-
         // buttons for panel
         startTimerButton = new JButton("<html>Start<br/>Timer<html/>");
         resetTimerButton = new JButton("<html>Reset<br/>Timer<html/>");
@@ -57,16 +54,16 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startTimerButton) {
-            actions.toggleTimer();
+            Actions.toggleTimer();
         }
         if (e.getSource() == addTimeButton) {
-            actions.addTime();
+            Actions.addTime();
         }
         if (e.getSource() == removeTimeButton) {
-            actions.removeTime();
+            Actions.removeTime();
         }
         if (e.getSource() == resetTimerButton) {
-            actions.resetTimer();
+            Actions.resetTimer();
         }
     }
 
