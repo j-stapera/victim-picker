@@ -48,12 +48,9 @@ public class VictimButton extends JButton implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(actionEvent.getSource()==this){
-            victimPicker.chooseVictim();
-
-            victimLabel.updateText(victimPicker.getCurrentVictim());
+        if (actionEvent.getSource() == this) {
+            Actions.selectVictim();
         }
-
     }
 
 
