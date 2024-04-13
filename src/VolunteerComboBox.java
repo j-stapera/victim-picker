@@ -54,7 +54,7 @@ public class VolunteerComboBox extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == volunteerCB) {
             String selectedName = (String) volunteerCB.getSelectedItem();
-            Actions.selectVolunteer(selectedName, students);
+            Actions.selectVolunteer(victimPicker, victimLabel, selectedName, students);
         }
     }
 }

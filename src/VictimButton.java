@@ -49,7 +49,7 @@ public class VictimButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == this) {
-            Actions.selectVictim();
+            Actions.selectVictim(victimPicker, victimLabel);
         }
     }
 
