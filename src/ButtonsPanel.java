@@ -60,13 +60,13 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == addPointButton) {
-            Actions.addPoint();
+            Actions.addPoint(victimPicker, victimLabel);
         }
         if (actionEvent.getSource() == removePointButton) {
-            Actions.removePoint();
+            Actions.removePoint(victimPicker, victimLabel);
         }
         if (actionEvent.getSource() == markAbsentButton) {
-            Actions.markAbsent();
+            Actions.markAbsent(victimPicker);
         }
     }
 
