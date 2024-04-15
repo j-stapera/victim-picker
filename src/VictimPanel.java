@@ -7,6 +7,12 @@ import java.awt.*;
 
 // THEN, OF COURSE, ONCE WE HAVE THE LAYOUT GOOD, THEN WE CAN ADD THE FUNCTIONALITY AND THEN WE JUICY
 
+
+
+// I THINK I FIXED THE BUTTONS DISAPPEARING THING BUT I'M NOT 100 ON IT
+// I HAVE STARTED TRYING TO ADD THE VOLUNTEER DROPDOWN TO THE GUI, BUT IT'S BEING A BIT CRINGE
+// IF YOU CAN FIGURE IT OUT... PLEASE SAVE ME
+
 public class VictimPanel extends JPanel {
 
     //CHANGE THESE VALUES TO CHANGE THE SIZE OF THE VictimPanel Square (the space in which all victim panels reside)
@@ -36,7 +42,7 @@ public class VictimPanel extends JPanel {
 
 
 
-    VictimPanel(int num) {
+    VictimPanel(int num, VolunteerComboBox volunteer) {
         this.number = num;
 
 
@@ -141,6 +147,11 @@ public class VictimPanel extends JPanel {
         this.add(removePointButton);
         this.add(markAbsentButton);
         this.add(pickVictimButton);
+
+        volunteer.setBounds(150, 350,200,35);
+        volunteer.setText("Volunteer");
+        volunteer.setFocusable(false);
+        this.add(volunteer);
 
     }
 
