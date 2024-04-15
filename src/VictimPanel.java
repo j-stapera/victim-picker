@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 
-// Got the adding and removing working. I made a new class "VictimNumber.java" that handles all the logic from both buttons
-// (just the adding and removing aspect, there is no Victim info present yet). So we should start on getting the actual victim
-// info in each John next.
-//ALS0, should we make our mini panels smaller to leave more room for the other info and buttons on the side or should we
-// make the frame bigga
+// FOR SOME REASON, THE REMOVE POINTS BUTTON IS MAKING THE ADD/REMOVE VICTIM BUTTONS DISAPPEAR
+// AND I DON'T KNOW WHY
+// I ADDED ALL OF THE BUTTONS, BUT WE STILL NEED TO ADD THE VOLUNTEER DROP DOWN
+
+// THEN, OF COURSE, ONCE WE HAVE THE LAYOUT GOOD, THEN WE CAN ADD THE FUNCTIONALITY AND THEN WE JUICY
 
 public class VictimPanel extends JPanel {
 
@@ -54,7 +54,7 @@ public class VictimPanel extends JPanel {
 
 
         //SET LOCAL VARIABLES SO THAT ALL STATEMENTS CAN BE COPIED AND PASTED
-        int localX, localY, localWidth, localHeight;
+        int localX = 0, localY = 0, localWidth = 0, localHeight = 0;
 
         //Setting Bounds of Frame
         switch(number)
@@ -65,8 +65,6 @@ public class VictimPanel extends JPanel {
                 localWidth = OnePanelWidth;
                 localHeight = OnePanelHeight;
 
-                this.setBounds(localX,localY,localWidth,localHeight);
-                pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
                 break;
 
             case 2 : //2 victims on screen (left panel)
@@ -75,8 +73,6 @@ public class VictimPanel extends JPanel {
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = TwoPanelHeight;
 
-                this.setBounds(localX,localY,localWidth,localHeight);
-                pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
                 break;
 
             case 3 : //2 victims on screen (right panel)
@@ -85,8 +81,6 @@ public class VictimPanel extends JPanel {
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = TwoPanelHeight;
 
-                this.setBounds(localX,localY,localWidth,localHeight);
-                pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
                 break;
 
             case 4, 7 : //3 or 4 victims on screen (top left panel)
@@ -95,8 +89,6 @@ public class VictimPanel extends JPanel {
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
-                this.setBounds(localX,localY,localWidth,localHeight);
-                pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
                 break;
 
             case 5, 8 : //3 or 4 victims on screen (top right panel)
@@ -105,8 +97,6 @@ public class VictimPanel extends JPanel {
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
-                this.setBounds(localX,localY,localWidth,localHeight);
-                pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
                 break;
 
             case 6 : //3 victims on screen (bottom panel)
@@ -115,8 +105,6 @@ public class VictimPanel extends JPanel {
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
-                this.setBounds(localX,localY,localWidth,localHeight);
-                pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
                 break;
 
             case 9 : //4 victims on screen (bottom left panel)
@@ -125,8 +113,6 @@ public class VictimPanel extends JPanel {
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
-                this.setBounds(localX,localY,localWidth,localHeight);
-                pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
                 break;
 
             case 10 : //4 victims on screen (bottom right panel)
@@ -135,13 +121,18 @@ public class VictimPanel extends JPanel {
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
-                this.setBounds(localX,localY,localWidth,localHeight);
-                pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
                 break;
 
             default :
                 // default Statement
         }
+
+        this.setBounds(localX,localY,localWidth,localHeight);
+        pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
+        addPointButton.setBounds((localWidth/32),(int)(localHeight/2.25),(int)(localWidth/3.2),(int)(localHeight/4.5));
+        removePointButton.setBounds((int)(localWidth/(32.0/11)),(int)(localHeight/2.25),(int)(localWidth/3.2),(int)(localHeight/4.5));
+        markAbsentButton.setBounds((int)(localWidth/(32.0/21)),(int)(localHeight/2.25),(int)(localWidth/3.2),(int)(localHeight/4.5));
+
 
         this.setLayout(null);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
