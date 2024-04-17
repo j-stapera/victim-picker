@@ -115,8 +115,8 @@ public class Victim implements Exportable {
 
     //method implemented from Exportable interface used to export the victim data
     @Override
-    public String export() {
-        return name + "*" + SECTION + "*" +score + "*" + lastPicked + "*" + isAbsent + "*" + absences + "*" + numberOfPicks;
+    public String[] export() {
+        return new String[]{"Name: " + name + "*Section: " + SECTION + "*Score: " + score + "*Last picked:" + lastPicked + "*Absent: " + isAbsent + "*Absences: " + absences + "*Number of picks: " + numberOfPicks};
     }
 
 }
