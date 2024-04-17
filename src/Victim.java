@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Name, section, score, date last picked, if absent, dates absent, num picks
  * Contains a comparable interface that compares num picks of two victims
  */
-public class Victim implements Comparable<Victim>{
+public class Victim implements Exportable {
 // TODO: Needs a interface called Victim and Exportable, too many dependencies on this class
     //TODO: Make a method to export this data
     private String name;
@@ -111,6 +111,12 @@ public class Victim implements Comparable<Victim>{
             return 1;
         else
             return -1;
+    }
+
+    //method implemented from Exportable interface used to export the victim data
+    @Override
+    public String export() {
+        return name + "*" + SECTION + "*" +score + "*" + lastPicked + "*" + isAbsent + "*" + absences + "*" + numberOfPicks;
     }
 
 }
