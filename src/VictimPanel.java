@@ -23,12 +23,12 @@ import java.awt.*;
 public class VictimPanel extends JPanel {
 
     //CHANGE THESE VALUES TO CHANGE THE SIZE OF THE VictimPanel Square (the space in which all victim panels reside)
-    private final int OnePanelWidth = 800;
-    private final int OnePanelHeight = 450;
+    private final int OnePanelWidth = 750;
+    private final int OnePanelHeight = 400;
 
     //X and Y values for the top left coordinates of the VictimPanel Square (the space in which all victim panels reside)
-    private final int TopLeftCornerX = 200;
-    private final int TopLeftCornerY = 40;
+    private final int TopLeftCornerX = 225;
+    private final int TopLeftCornerY = 100;
 
     //BUTTONS CURRENTLY HAVE ABSOLUTLEY 0 FUNCTIONALITY
     private final JButton addPointButton;
@@ -52,6 +52,7 @@ public class VictimPanel extends JPanel {
     VictimPanel(int num, VolunteerComboBox volunteer) {
         this.number = num;
 
+        //VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel);
 
         addPointButton = new JButton("Add Point");
         addPointButton.setFocusable(false);

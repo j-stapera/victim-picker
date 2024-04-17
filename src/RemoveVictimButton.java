@@ -11,7 +11,7 @@ public class RemoveVictimButton extends JButton implements ActionListener {
         this.numOfVictims = numOfVictims;
         //this.victimPanels = victimPanels;
 
-        this.setBounds(300,500,200,100);
+        this.setBounds(400,500,200,100);
         this.setFocusable(false);
         this.addActionListener(this);
         this.setText("Remove Victim");
