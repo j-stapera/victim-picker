@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.awt.*;
 public class VictimPicker {
@@ -20,13 +21,23 @@ public class VictimPicker {
     }
 
     public Victim chooseVictim(){
+        //remove absent victims from being selected
+        victims.removeAll(absentToday);
+
+        //TESTING
+        System.out.println("\nlist:");
+        for(Victim v : victims){
+            System.out.print(v.getName() + "  -  ");
+        }
+        System.out.println(" ");
+
         Collections.sort(victims);
         Random rand = new Random();
 
         int index = rand.nextInt(victims.size());
 
         pickedToday.add(victims.get(index));
-        markAbsent(victims.get(index));
+        //markAbsent(victims.get(index));
 
         currentVictim = victims.get(index);
         return currentVictim;
@@ -104,6 +115,13 @@ public class VictimPicker {
     //Mark students absent if they are not present
     public void markAbsent(Victim absentVictim){
         absentToday.add(absentVictim);
+
+        //TESTING - displays all added to absentToday
+        System.out.println("\nAbsent:");
+        for(Victim v : absentToday){
+            System.out.print(v.getName() + " - ");
+        }
+        System.out.println("  ");
     }
 
     //Load roster of students into victims array
