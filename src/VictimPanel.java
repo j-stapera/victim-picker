@@ -13,6 +13,13 @@ import java.awt.*;
 // I HAVE STARTED TRYING TO ADD THE VOLUNTEER DROPDOWN TO THE GUI, BUT IT'S BEING A BIT CRINGE
 // IF YOU CAN FIGURE IT OUT... PLEASE SAVE ME
 
+//TODO - (design changes)
+//Make the panel square smaller
+//      Move it further down in the frame
+//separate victimPanels to add a space between them
+//Move the Add/Remove Victim buttons to be centered, but separate (One on left half, one on right half)
+
+
 public class VictimPanel extends JPanel {
 
     //CHANGE THESE VALUES TO CHANGE THE SIZE OF THE VictimPanel Square (the space in which all victim panels reside)
