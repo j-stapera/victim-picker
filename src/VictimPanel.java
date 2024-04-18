@@ -25,6 +25,7 @@ public class VictimPanel extends JPanel {
     //CHANGE THESE VALUES TO CHANGE THE SIZE OF THE VictimPanel Square (the space in which all victim panels reside)
     private final int OnePanelWidth = 750;
     private final int OnePanelHeight = 400;
+    private final int PanelDistance = 5;
 
     //X and Y values for the top left coordinates of the VictimPanel Square (the space in which all victim panels reside)
     private final int TopLeftCornerX = 225;
@@ -42,9 +43,9 @@ public class VictimPanel extends JPanel {
 
 
     //These values are dependent on the size of the VictimPanel Square (the space in which all victim panels reside)
-    private final int TwoThreeFourPanelWidth = OnePanelWidth/2;
+    private final int TwoThreeFourPanelWidth = (OnePanelWidth/2) - PanelDistance;
     private final int TwoPanelHeight = OnePanelHeight;
-    private final int ThreeFourHeight = OnePanelHeight/2;
+    private final int ThreeFourHeight = (OnePanelHeight/2) - PanelDistance;
 
 
 
@@ -90,7 +91,7 @@ public class VictimPanel extends JPanel {
                 break;
 
             case 3 : //2 victims on screen (right panel)
-                localX = TopLeftCornerX + TwoThreeFourPanelWidth;
+                localX = TopLeftCornerX + TwoThreeFourPanelWidth + PanelDistance;
                 localY = TopLeftCornerY;
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = TwoPanelHeight;
@@ -106,7 +107,7 @@ public class VictimPanel extends JPanel {
                 break;
 
             case 5, 8 : //3 or 4 victims on screen (top right panel)
-                localX = TopLeftCornerX + TwoThreeFourPanelWidth;
+                localX = TopLeftCornerX + TwoThreeFourPanelWidth + PanelDistance;
                 localY = TopLeftCornerY;
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
@@ -115,7 +116,7 @@ public class VictimPanel extends JPanel {
 
             case 6 : //3 victims on screen (bottom panel)
                 localX = TopLeftCornerX + (TwoThreeFourPanelWidth/2);
-                localY = TopLeftCornerY + ThreeFourHeight;
+                localY = TopLeftCornerY + ThreeFourHeight + PanelDistance;
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
@@ -123,15 +124,15 @@ public class VictimPanel extends JPanel {
 
             case 9 : //4 victims on screen (bottom left panel)
                 localX = TopLeftCornerX;
-                localY = TopLeftCornerY + ThreeFourHeight;
+                localY = TopLeftCornerY + ThreeFourHeight + PanelDistance;
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
                 break;
 
             case 10 : //4 victims on screen (bottom right panel)
-                localX = TopLeftCornerX + TwoThreeFourPanelWidth;
-                localY = TopLeftCornerY + ThreeFourHeight;
+                localX = TopLeftCornerX + TwoThreeFourPanelWidth + PanelDistance;
+                localY = TopLeftCornerY + ThreeFourHeight + PanelDistance;
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
