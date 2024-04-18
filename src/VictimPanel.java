@@ -1,23 +1,13 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
-
-// FOR SOME REASON, THE REMOVE POINTS BUTTON IS MAKING THE ADD/REMOVE VICTIM BUTTONS DISAPPEAR
-// AND I DON'T KNOW WHY
-// I ADDED ALL OF THE BUTTONS, BUT WE STILL NEED TO ADD THE VOLUNTEER DROP DOWN
-
-// THEN, OF COURSE, ONCE WE HAVE THE LAYOUT GOOD, THEN WE CAN ADD THE FUNCTIONALITY AND THEN WE JUICY
-
-
-
-// I THINK I FIXED THE BUTTONS DISAPPEARING THING BUT I'M NOT 100 ON IT
-// I HAVE STARTED TRYING TO ADD THE VOLUNTEER DROPDOWN TO THE GUI, BUT IT'S BEING A BIT CRINGE
-// IF YOU CAN FIGURE IT OUT... PLEASE SAVE ME
+import java.util.ArrayList;
 
 //TODO - (design changes)
-//Make the panel square smaller
-//      Move it further down in the frame
-//separate victimPanels to add a space between them
-//Move the Add/Remove Victim buttons to be centered, but separate (One on left half, one on right half)
+//Potentially Change Font
+//Consideration:
+    //Font font1 = new Font("Arial", Font.BOLD, 20);
+    //this.setFont(font1);
 
 
 public class VictimPanel extends JPanel {
@@ -36,7 +26,8 @@ public class VictimPanel extends JPanel {
     private final JButton removePointButton;
     private final JButton markAbsentButton;
     private final JButton pickVictimButton;
-
+    private JComboBox volunteer;
+    private JLabel pointsText;
     private final int number;
 
 
@@ -48,12 +39,19 @@ public class VictimPanel extends JPanel {
     private final int ThreeFourHeight = (OnePanelHeight/2) - PanelDistance;
 
 
+    private VictimPicker victimPicker;
 
 
-    VictimPanel(int num, VolunteerComboBox volunteer) {
+    VictimPanel(int num, VictimPicker vp) {
         this.number = num;
+        victimPicker = vp;
 
-        //VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel);
+        String names[] = {"bruh", "moment", "epic", "gemera"};
+        volunteer = new JComboBox(names);
+        volunteer.setFocusable(false);
+
+        pointsText = new JLabel("points: 0");
+        pointsText.setFocusable(false);
 
         addPointButton = new JButton("Add Point");
         addPointButton.setFocusable(false);
@@ -66,7 +64,6 @@ public class VictimPanel extends JPanel {
 
         pickVictimButton = new JButton("Pick Victim");
         pickVictimButton.setFocusable(false);
-
 
         //SET LOCAL VARIABLES SO THAT ALL STATEMENTS CAN BE COPIED AND PASTED
         int localX = 0, localY = 0, localWidth = 0, localHeight = 0;
@@ -91,7 +88,7 @@ public class VictimPanel extends JPanel {
                 break;
 
             case 3 : //2 victims on screen (right panel)
-                localX = TopLeftCornerX + TwoThreeFourPanelWidth + PanelDistance;
+                localX = TopLeftCornerX + TwoThreeFourPanelWidth + (PanelDistance * 2);
                 localY = TopLeftCornerY;
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = TwoPanelHeight;
@@ -107,7 +104,7 @@ public class VictimPanel extends JPanel {
                 break;
 
             case 5, 8 : //3 or 4 victims on screen (top right panel)
-                localX = TopLeftCornerX + TwoThreeFourPanelWidth + PanelDistance;
+                localX = TopLeftCornerX + TwoThreeFourPanelWidth + (PanelDistance * 2);
                 localY = TopLeftCornerY;
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
@@ -116,7 +113,7 @@ public class VictimPanel extends JPanel {
 
             case 6 : //3 victims on screen (bottom panel)
                 localX = TopLeftCornerX + (TwoThreeFourPanelWidth/2);
-                localY = TopLeftCornerY + ThreeFourHeight + PanelDistance;
+                localY = TopLeftCornerY + ThreeFourHeight + (PanelDistance * 2);
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
@@ -124,15 +121,15 @@ public class VictimPanel extends JPanel {
 
             case 9 : //4 victims on screen (bottom left panel)
                 localX = TopLeftCornerX;
-                localY = TopLeftCornerY + ThreeFourHeight + PanelDistance;
+                localY = TopLeftCornerY + ThreeFourHeight + (PanelDistance * 2);
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
                 break;
 
             case 10 : //4 victims on screen (bottom right panel)
-                localX = TopLeftCornerX + TwoThreeFourPanelWidth + PanelDistance;
-                localY = TopLeftCornerY + ThreeFourHeight + PanelDistance;
+                localX = TopLeftCornerX + TwoThreeFourPanelWidth + (PanelDistance * 2);
+                localY = TopLeftCornerY + ThreeFourHeight + (PanelDistance * 2);
                 localWidth = TwoThreeFourPanelWidth;
                 localHeight = ThreeFourHeight;
 
@@ -149,6 +146,13 @@ public class VictimPanel extends JPanel {
         markAbsentButton.setBounds((int)(localWidth/(32.0/21)),(int)(localHeight/2.25),(int)(localWidth/3.2),(int)(localHeight/4.5));
 
 
+        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
+
+        pointsText.setBounds((int)(localWidth/(32.0/21)),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
+        pointsText.setHorizontalAlignment(JLabel.CENTER);
+        pointsText.setVerticalAlignment(JLabel.CENTER);
+
+
         this.setLayout(null);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
 
@@ -157,10 +161,9 @@ public class VictimPanel extends JPanel {
         this.add(markAbsentButton);
         this.add(pickVictimButton);
 
-        volunteer.setBounds(150, 350,200,35);
-        volunteer.setText("Volunteer");
-        volunteer.setFocusable(false);
         this.add(volunteer);
+        this.add(pointsText);
+
 
     }
 

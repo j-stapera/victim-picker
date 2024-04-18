@@ -54,7 +54,7 @@ public class Main{
         //Create ArrayList of every necessary VictimPanel
         ArrayList<VictimPanel> victimPanels = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            victimPanels.add(new VictimPanel(i, volunteer));
+            victimPanels.add(new VictimPanel(i, victimPicker));
         }
 
         for (VictimPanel v : victimPanels) {
