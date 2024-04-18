@@ -114,7 +114,16 @@ public class VictimPicker {
 
     //Mark students absent if they are not present
     public void markAbsent(Victim absentVictim){
-        absentToday.add(absentVictim);
+
+        //TOGGLE
+        //if victim is already marked absent, remove
+        if(absentToday.contains(absentVictim)){
+            absentToday.remove(absentVictim);
+        }
+        //else, add them to absent list
+        else{
+            absentToday.add(absentVictim);
+        }
 
         //TESTING - displays all added to absentToday
         System.out.println("\nAbsent:");
