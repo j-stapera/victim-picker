@@ -47,7 +47,7 @@ public class VictimNumber {
         }
         for(VictimPanel v:victimPanels)
         {
-            v.updatePoints();
+            v.updateVictimPanel();
         }
     }
 
@@ -88,7 +88,7 @@ public class VictimNumber {
         }
         for(VictimPanel v:victimPanels)
         {
-            v.updatePoints();
+            v.updateVictimPanel();
         }
     }
 

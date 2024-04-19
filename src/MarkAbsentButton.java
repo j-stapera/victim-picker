@@ -12,7 +12,8 @@ public class MarkAbsentButton extends JButton implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        victimPanel.getVictim().addAbsence();
-        victimPanel.getVictimPicker().markAbsent(victimPanel.getVictim());
+        if (victimPanel.getVictim().getName() != "Pick Victim") {
+            Actions.markAbsent(victimPanel.getVictim(), victimPanel);
+        }
     }
 }

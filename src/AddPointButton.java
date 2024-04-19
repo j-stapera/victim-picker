@@ -14,8 +14,9 @@ public class AddPointButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        victimPanel.getVictim().addScore();
-        victimPanel.updatePoints();
+        if (victimPanel.getVictim().getName() != "Pick Victim") {
+            Actions.addPoint(victimPanel.getVictim(), victimPanel);
+        }
 
     }
 }

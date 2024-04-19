@@ -1,11 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-//TODO - (design changes)
-//Potentially Change Font
-//Consideration:
-    //Font font1 = new Font("Arial", Font.BOLD, 20);
-    //this.setFont(font1);
+
 
 
 public class VictimPanel extends JPanel {
@@ -37,31 +33,24 @@ public class VictimPanel extends JPanel {
 
 
     VictimPanel(int num, VictimPicker vp) {
+        Font font1 = new Font("Arial", Font.BOLD, 20);
+
         this.number = num;
         victimPicker = vp;
 
-        String names[] = {"bruh", "moment", "epic", "gemera"};
+        //need to get names from victimPicker then upload into volunteer box
+        String names[] = {"ruh", "moment", "epic", "gemera"};
         volunteer = new JComboBox(names);
         volunteer.setFocusable(false);
 
         pointsText = new JLabel("Points: 0");
         pointsText.setFocusable(false);
 
+        //Create all the Buttons on the Panel
         AddPointButton addPointButton = new AddPointButton(this);
-        //addPointButton = new JButton("Add Point");
-        addPointButton.setFocusable(false);
-
         RemovePointButton removePointButton = new RemovePointButton(this);
-        //removePointButton = new JButton("Remove Point");
-        removePointButton.setFocusable(false);
-
         MarkAbsentButton markAbsentButton = new MarkAbsentButton(this);
-        //markAbsentButton = new JButton("Mark Absent");
-        markAbsentButton.setFocusable(false);
-
         pickVictimButton = new PickVictimButton(this);
-        //pickVictimButton = new JButton("Pick Victim");
-        pickVictimButton.setFocusable(false);
 
         //SET LOCAL VARIABLES SO THAT ALL STATEMENTS CAN BE COPIED AND PASTED
         int localX = 0, localY = 0, localWidth = 0, localHeight = 0;
@@ -137,18 +126,20 @@ public class VictimPanel extends JPanel {
                 // default Statement
         }
 
+        //Set the sizes of every element in the panel
         this.setBounds(localX,localY,localWidth,localHeight);
         pickVictimButton.setBounds((int)(localWidth/(16.0/3)),(localHeight/9),(int)(localWidth/1.6),(int)(localHeight/4.5));
         addPointButton.setBounds((localWidth/32),(int)(localHeight/2.25),(int)(localWidth/3.2),(int)(localHeight/4.5));
         removePointButton.setBounds((int)(localWidth/(32.0/11)),(int)(localHeight/2.25),(int)(localWidth/3.2),(int)(localHeight/4.5));
         markAbsentButton.setBounds((int)(localWidth/(32.0/21)),(int)(localHeight/2.25),(int)(localWidth/3.2),(int)(localHeight/4.5));
+        pointsText.setBounds((int)(localWidth/(32.0/21)),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
+        pointsText.setHorizontalAlignment(JLabel.CENTER);
+        pointsText.setVerticalAlignment(JLabel.CENTER);
 
 
         volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
 
-        pointsText.setBounds((int)(localWidth/(32.0/21)),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
-        pointsText.setHorizontalAlignment(JLabel.CENTER);
-        pointsText.setVerticalAlignment(JLabel.CENTER);
+
 
 
         this.setLayout(null);
@@ -159,9 +150,10 @@ public class VictimPanel extends JPanel {
         this.add(removePointButton);
         this.add(markAbsentButton);
         this.add(pickVictimButton);
+        this.add(pointsText);
 
         this.add(volunteer);
-        this.add(pointsText);
+
 
 
     }
@@ -182,5 +174,11 @@ public class VictimPanel extends JPanel {
     public void updatePoints(){
         pointsText.setText("Points: " + victim.getScore());
     }
+
+    public void updateVictimPanel() {
+        pointsText.setText("Points: " + victim.getScore());
+        pickVictimButton.setText(victim.getName());
+    }
+
 
 }

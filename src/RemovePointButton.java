@@ -12,7 +12,8 @@ public class RemovePointButton extends JButton implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        victimPanel.getVictim().subtractScore();
-        victimPanel.updatePoints();
+        if (victimPanel.getVictim().getName() != "Pick Victim") {
+            Actions.removePoint(victimPanel.getVictim(), victimPanel);
+        }
     }
 }

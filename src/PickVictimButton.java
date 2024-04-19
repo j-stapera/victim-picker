@@ -14,10 +14,6 @@ public class PickVictimButton extends JButton implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        Victim temp = victimPanel.getVictimPicker().chooseVictim();
-        button.setText(temp.getName());
-        victimPanel.setVictim(temp);
-        victimPanel.updatePoints();
-        button.repaint();
+        Actions.selectVictim(victimPanel.getVictimPicker(), victimPanel);
     }
 }
