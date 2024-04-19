@@ -47,7 +47,11 @@ public class Main{
 
         // add them to a central frame
         Frame frame = new Frame();
-
+        //frame.add(button);
+        //frame.add(victimLabel);
+        //frame.add(panel);
+        //frame.add(volunteer);
+        //frame.add(timerLabel);
 
         //ADD YOUR TESTING COMPONENTS HERE
 
@@ -71,11 +75,7 @@ public class Main{
         frame.add(removeVictimButton);
 
         frame.repaint();
-        //frame.add(button);
-        //frame.add(victimLabel);
-        //frame.add(panel);
-        //frame.add(volunteer);
-        //frame.add(timerLabel);
+
 
         // Creates a window listener so that when frame is close
         // an action is performed, intended for  exporting victim list upon exit
