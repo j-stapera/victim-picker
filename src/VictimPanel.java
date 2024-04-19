@@ -1,7 +1,5 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.util.ArrayList;
 
 //TODO - (design changes)
 //Potentially Change Font
@@ -21,17 +19,13 @@ public class VictimPanel extends JPanel {
     private final int TopLeftCornerX = 225;
     private final int TopLeftCornerY = 100;
 
-    //BUTTONS CURRENTLY HAVE ABSOLUTLEY 0 FUNCTIONALITY
-    private final JButton addPointButton;
-    private final JButton removePointButton;
-    private final JButton markAbsentButton;
-    private final JButton pickVictimButton;
     private JComboBox volunteer;
     private JLabel pointsText;
     private final int number;
 
+    private Victim victim = new Victim("Pick Victim");
 
-
+    private PickVictimButton pickVictimButton;
 
     //These values are dependent on the size of the VictimPanel Square (the space in which all victim panels reside)
     private final int TwoThreeFourPanelWidth = (OnePanelWidth/2) - PanelDistance;
@@ -50,19 +44,23 @@ public class VictimPanel extends JPanel {
         volunteer = new JComboBox(names);
         volunteer.setFocusable(false);
 
-        pointsText = new JLabel("points: 0");
+        pointsText = new JLabel("Points: 0");
         pointsText.setFocusable(false);
 
-        addPointButton = new JButton("Add Point");
+        AddPointButton addPointButton = new AddPointButton(this);
+        //addPointButton = new JButton("Add Point");
         addPointButton.setFocusable(false);
 
-        removePointButton = new JButton("Remove Point");
+        RemovePointButton removePointButton = new RemovePointButton(this);
+        //removePointButton = new JButton("Remove Point");
         removePointButton.setFocusable(false);
 
-        markAbsentButton = new JButton("Mark Absent");
+        MarkAbsentButton markAbsentButton = new MarkAbsentButton(this);
+        //markAbsentButton = new JButton("Mark Absent");
         markAbsentButton.setFocusable(false);
 
-        pickVictimButton = new JButton("Pick Victim");
+        pickVictimButton = new PickVictimButton(this);
+        //pickVictimButton = new JButton("Pick Victim");
         pickVictimButton.setFocusable(false);
 
         //SET LOCAL VARIABLES SO THAT ALL STATEMENTS CAN BE COPIED AND PASTED
@@ -156,6 +154,7 @@ public class VictimPanel extends JPanel {
         this.setLayout(null);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
 
+
         this.add(addPointButton);
         this.add(removePointButton);
         this.add(markAbsentButton);
@@ -165,6 +164,23 @@ public class VictimPanel extends JPanel {
         this.add(pointsText);
 
 
+    }
+
+    public VictimPicker getVictimPicker() {
+        return victimPicker;
+    }
+
+    public void setVictim(Victim victim) {
+        this.victim = victim;
+        pickVictimButton.setText(victim.getName());
+    }
+
+    public Victim getVictim(){
+        return victim;
+    }
+
+    public void updatePoints(){
+        pointsText.setText("Points: " + victim.getScore());
     }
 
 }
