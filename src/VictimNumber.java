@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class VictimNumber {
-    private ArrayList<VictimPanel> victimPanels;
+    private final ArrayList<VictimPanel> victimPanels;
     private int numOfVictims = 1; //Initially one victim
 
 
