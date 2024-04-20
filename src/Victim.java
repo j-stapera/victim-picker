@@ -118,5 +118,5 @@ public class Victim implements Exportable, Comparable<Victim> {
     public String[] export() {
         return new String[]{"Name: " + name + "*Section: " + SECTION + "*Score: " + score + "*Last picked:" + lastPicked + "*Absent: " + isAbsent + "*Absences: " + absences + "*Number of picks: " + numberOfPicks};
     }
-
+//test
 }
