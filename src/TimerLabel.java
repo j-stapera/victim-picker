@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TimerLabel extends JLabel{
+    /**
+     * A label that is provided to a timer in order
+     * to be displayed in a GUI
+     */
     TimerLabel(){
         // would like to have time center under "Time left"
         // but it'll work - JS
@@ -19,9 +23,10 @@ public class TimerLabel extends JLabel{
         this.setText("<html>Time Left:<br/>" + time + "s</html>");
     }
 
-    //show text "Time!" when timer reaches a desired point
-    //NOTE: I wanted this to flash via Thread.sleep() but it refused to work. Should find
-    //      another way to do it since it would look cool - JS
+    // show text "Time!" after curr time:
+    // Time Left:
+    // <time>
+    // Time!
     public void endTime(int time){
         this.setText("<html>Time Left:<br/>" + time + "s<br/><i>Time!<i/></html>");
     }

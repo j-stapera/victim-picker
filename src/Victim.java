@@ -6,13 +6,14 @@ import java.util.ArrayList;
  * Name, section, score, date last picked, if absent, dates absent, num picks
  * Contains a comparable interface that compares num picks of two victims
  */
-public class Victim implements Comparable<Victim>{
-
+public class Victim implements Exportable, Comparable<Victim> {
+// TODO: Needs a interface called Victim and Exportable, too many dependencies on this class
+    //TODO: Make a method to export this data
     private String name;
     private static final int SECTION = 22199;
     private int score;
     private Date lastPicked;
-    private boolean absent = false;
+    private boolean isAbsent = false;
     private ArrayList<Date> absences;
     private int numberOfPicks;
 
@@ -23,6 +24,7 @@ public class Victim implements Comparable<Victim>{
      * name of victim
      */
     //Constructor
+    // TODO: Needs another constructor that allows for all vars to be filled
     public Victim(String name){
         this.name = name;
         absences = new ArrayList<Date>();
@@ -51,8 +53,6 @@ public class Victim implements Comparable<Victim>{
     public void setNumberOfPicks(int numPicks){
         numberOfPicks = numPicks;
     }
-
-
 
 
     //Getters
@@ -87,12 +87,12 @@ public class Victim implements Comparable<Victim>{
     public void addAbsence(){
         Date today = new Date();
         absences.add(today);
-        absent = true;
+        isAbsent = true;
     }
 
-    //Method to test if a student is absent
-    public boolean ifAbsent(){
-        return absent;
+    //returns bool for if a victim is absent
+    public boolean isAbsent(){
+        return isAbsent;
     }
 
     /**
@@ -111,6 +111,12 @@ public class Victim implements Comparable<Victim>{
             return 1;
         else
             return -1;
+    }
+
+    //method implemented from Exportable interface used to export the victim data
+    @Override
+    public String[] export() {
+        return new String[]{"Name: " + name + "*Section: " + SECTION + "*Score: " + score + "*Last picked:" + lastPicked + "*Absent: " + isAbsent + "*Absences: " + absences + "*Number of picks: " + numberOfPicks};
     }
 
 }

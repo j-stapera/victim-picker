@@ -12,7 +12,8 @@ public class TimerLogic {
 
 
     /**
-     *
+     * A timer that decrements by 1 every second.
+     * Updates label for every decrement
      * @param tl
      * timer label attached to timer
      */
@@ -40,6 +41,8 @@ public class TimerLogic {
 
     }
 
+    // adds time to timer based on set increments
+    // if timer is running, it does not update the startTime
     public void addTime(){
         if (timer.isRunning()){
             currTime += timeIncrement; //add 30 to running time
@@ -50,13 +53,14 @@ public class TimerLogic {
         timerLabel.updateTime(currTime);
     }
 
+    // removes time to timer based on set increments
+    // if timer is running, it does not update the startTime
     public void removeTime(){
-        //makes it so when timer is running and time is decreased
-        //that resetTimer can still reset back to the original time
         if(timer.isRunning()) {
             //prevent currTime from going negative
             if (currTime > 0 && (currTime - timeIncrement) > 0) {
                 currTime -= timeIncrement; // remove timeIncrement amt from running time
+
                 //if curr time goes negative then set to 0
             } else if ((currTime - timeIncrement) <= 0) {
                 currTime = 0;
@@ -65,6 +69,7 @@ public class TimerLogic {
             //prevent startTime from going negative
             if (startTime > 0 && (startTime - timeIncrement) > 0) {
                 startTime -= timeIncrement; // remove timeIncrement from start time
+
                 //if startTime goes negative then set to 0
             } else if ((startTime - timeIncrement) <= 0) {
                 startTime = 0;
@@ -74,21 +79,23 @@ public class TimerLogic {
         timerLabel.updateTime(currTime);
     }
 
+    // start decrementing timer
     public void startTimer(){
-        // start decrementing timer
         timer.start();
     }
 
+    // stop decrementing timer
     public void stopTimer(){
-        // stop decrementing timer
         timer.stop();
     }
 
+    // resets time to the time before it was started
     public void resetTimer(){
         currTime = startTime;
         timerLabel.updateTime(currTime);
     }
 
+    // returns current status of timer
     public boolean isRunning(){
         return timer.isRunning();
     }

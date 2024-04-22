@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,20 +8,20 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     private final JButton addPointButton;
     private final JButton removePointButton;
     private final JButton markAbsentButton;
-    private final TimerButtonPanel startTimerButton;
+    private final TimerButtonPanel timerButtons;
     private final VictimPicker victimPicker;
     private final VictimLabel victimLabel;
 
 
-
     /**
-     * Creates a set of 4 clickable buttons (add point, remove point, mark absent, start timer)
-     * !!IMPLEMENTATION OF ACTIONS MISSING!!
+     * Creates a set of 4 clickable buttons (add point, remove point, mark absent, timer panel)
+     * see TimerButtonPanel for info on timer panel
      */
+    // NOTE: may want to move timer panel out of buttons panel, at least in its declaration
+    //       instead possibly consider having it added to the panel in main
     ButtonsPanel(VictimPicker vp, VictimLabel vl, TimerLabel timerLabel){
         this.victimPicker = vp;
         this.victimLabel = vl;
-
         this.setBounds(125,525,750,150);
         this.setLayout(null);
         //this.setBackground(Color.BLACK);
@@ -41,13 +42,15 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         markAbsentButton.setBounds(360,50,150,50);
         markAbsentButton.addActionListener(this);
 
-        startTimerButton = new TimerButtonPanel(timerLabel);
-        startTimerButton.setBounds(530,25,200,100);
+        // This is a button panel containing a +,-, reset time, start/stop time buttons
+        timerButtons = new TimerButtonPanel(timerLabel);
+        timerButtons.setBounds(530,25,200,100);
 
+        //adds buttons to a single panel for manipulation
         this.add(addPointButton);
         this.add(removePointButton);
         this.add(markAbsentButton);
-        this.add(startTimerButton);
+        this.add(timerButtons);
 
 
     }
@@ -56,27 +59,14 @@ public class ButtonsPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(actionEvent.getSource() == addPointButton){
-            victimPicker.getCurrentVictim().addScore();
-            victimLabel.updateText(victimPicker.getCurrentVictim());
-
+        if (actionEvent.getSource() == addPointButton) {
+            Actions.addPoint(victimPicker, victimLabel);
         }
-        if(actionEvent.getSource() == removePointButton)
-        {
-            victimPicker.getCurrentVictim().subtractScore();
-            victimLabel.updateText(victimPicker.getCurrentVictim());
+        if (actionEvent.getSource() == removePointButton) {
+            Actions.removePoint(victimPicker, victimLabel);
         }
-        if(actionEvent.getSource() == markAbsentButton){
-            victimPicker.getCurrentVictim().addAbsence();
-
-            // UGLY? Probably
-            // sets text to "Marked!" then waits 1 sec then returns to original text
-            markAbsentButton.setText("Marked!");
-            Timer timer = new Timer( 1000, e -> markAbsentButton.setText("Mark Absent"));
-            timer.setRepeats( false );
-            timer.start();
-
-
+        if (actionEvent.getSource() == markAbsentButton) {
+            Actions.markAbsent(victimPicker);
         }
     }
 
