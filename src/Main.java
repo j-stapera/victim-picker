@@ -48,11 +48,35 @@ public class Main{
 
         // add them to a central frame
         Frame frame = new Frame();
-        frame.add(button);
-        frame.add(victimLabel);
-        frame.add(panel);
-        frame.add(volunteer);
-        frame.add(timerLabel);
+        //frame.add(button);
+        //frame.add(victimLabel);
+        //frame.add(panel);
+        //frame.add(volunteer);
+        //frame.add(timerLabel);
+
+        //ADD YOUR TESTING COMPONENTS HERE
+
+        //Create ArrayList of every necessary VictimPanel
+        ArrayList<VictimPanel> victimPanels = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            victimPanels.add(new VictimPanel(i, victimPicker));
+        }
+
+        for (VictimPanel v : victimPanels) {
+            frame.add(v);
+            v.setVisible(false);
+        }
+
+        VictimNumber victimNumber = new VictimNumber(victimPanels);
+
+        AddVictimButton addVictimButton = new AddVictimButton(victimNumber);
+        frame.add(addVictimButton);
+
+        RemoveVictimButton removeVictimButton = new RemoveVictimButton(victimNumber);
+        frame.add(removeVictimButton);
+
+        frame.repaint();
+
 
         // Creates a window listener so that when frame is close
         // an action is performed, intended for  exporting victim list upon exit
