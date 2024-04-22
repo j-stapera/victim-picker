@@ -3,6 +3,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
 
 /**
  * Driver class for VictimPicker w/ GUI
@@ -63,6 +64,10 @@ public class Main{
         });
 
 
+
+
+        //Created new testframe to show bounds of new components - Connor
+        TestFrame testFrame = new TestFrame();
     }
 
 
