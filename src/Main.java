@@ -3,6 +3,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
 
 /**
  * Driver class for VictimPicker w/ GUI
@@ -50,12 +51,35 @@ public class Main {
 
         // Add them to a central frame
         Frame frame = new Frame();
-        frame.addScoreboardButton(students); // Add the scoreboard button
-        frame.add(button);
-        frame.add(victimLabel);
-        frame.add(panel);
-        frame.add(volunteer);
-        frame.add(timerLabel);
+
+        //frame.add(button);
+        //frame.add(victimLabel);
+        //frame.add(panel);
+        //frame.add(volunteer);
+        //frame.add(timerLabel);
+
+        //ADD YOUR TESTING COMPONENTS HERE
+
+        //Create ArrayList of every necessary VictimPanel
+        ArrayList<VictimPanel> victimPanels = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            victimPanels.add(new VictimPanel(i, victimPicker));
+        }
+
+        for (VictimPanel v : victimPanels) {
+            frame.add(v);
+            v.setVisible(false);
+        }
+
+        VictimNumber victimNumber = new VictimNumber(victimPanels);
+
+        AddVictimButton addVictimButton = new AddVictimButton(victimNumber);
+        frame.add(addVictimButton);
+
+        RemoveVictimButton removeVictimButton = new RemoveVictimButton(victimNumber);
+        frame.add(removeVictimButton);
+
+        frame.repaint();
 
         // Add a window listener to dispose the frame
         frame.addWindowListener(new WindowAdapter() {
@@ -65,6 +89,11 @@ public class Main {
             }
         });
 
-        frame.setVisible(true);
+        //frame.setVisible(true); 
+
+
+        //Created new testframe to show bounds of new components - Connor
+        TestFrame testFrame = new TestFrame();
+
     }
 }
