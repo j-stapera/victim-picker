@@ -82,9 +82,11 @@ public class Main {
         frame.repaint();
 
         // Add a window listener to dispose the frame
+        // exports all data on close, stupid-proofing accidental closing
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                Actions.exportExportables(victimPicker);
                 e.getWindow().dispose();
             }
         });
@@ -93,7 +95,7 @@ public class Main {
 
 
         //Created new testframe to show bounds of new components - Connor
-        TestFrame testFrame = new TestFrame();
+        TestFrame testFrame = new TestFrame(victimPicker);
 
     }
 }
