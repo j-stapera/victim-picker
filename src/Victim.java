@@ -10,7 +10,6 @@ public class Victim implements Exportable, Comparable<Victim> {
 // TODO: Needs a interface called Victim and Exportable, too many dependencies on this class
     //TODO: Make a method to export this data
     private String name;
-    private static final int SECTION = 22199;
     private int score;
     private Date lastPicked;
     private boolean isAbsent = false;
@@ -60,9 +59,6 @@ public class Victim implements Exportable, Comparable<Victim> {
         return name;
     }
 
-    public int getSection(){
-        return SECTION;
-    }
 
     public int getScore(){
         return score;
@@ -115,8 +111,8 @@ public class Victim implements Exportable, Comparable<Victim> {
 
     //method implemented from Exportable interface used to export the victim data
     @Override
-    public String[] export() {
-        return new String[]{"Name: " + name + "*Section: " + SECTION + "*Score: " + score + "*Last picked:" + lastPicked + "*Absent: " + isAbsent + "*Absences: " + absences + "*Number of picks: " + numberOfPicks};
+    public String export() {
+        return "Name:" + name + "*Score: " + score + "*Last picked:" + lastPicked + "*Absent:" + isAbsent + "*Absences:" + absences + "*Number of picks:" + numberOfPicks;
     }
 //test
 }
