@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Frame extends JFrame  {
 
@@ -8,11 +9,27 @@ public class Frame extends JFrame  {
      */
     Frame(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1000,750);
+        this.setSize(1200,800);
         this.setLayout(null);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
+    }
+    public void addScoreboardButton(ArrayList<Victim> victims) {
+        JButton scoreboardButton = new JButton("Open Scoreboard");
+        scoreboardButton.setBounds(10, 10, 150, 30);
+        scoreboardButton.addActionListener(e -> {
+            // Open the scoreboard panel when the button is clicked
+            ScoreboardPanel scoreboardPanel = new ScoreboardPanel(victims);
+            scoreboardPanel.updateScoreboard();
+            JFrame scoreboardFrame = new JFrame("Scoreboard");
+            scoreboardFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            scoreboardFrame.getContentPane().add(scoreboardPanel);
+            scoreboardFrame.pack();
+            scoreboardFrame.setLocationRelativeTo(null);
+            scoreboardFrame.setVisible(true);
+        });
+        this.add(scoreboardButton);
     }
 }
