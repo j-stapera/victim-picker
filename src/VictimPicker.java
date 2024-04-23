@@ -111,4 +111,13 @@ public class VictimPicker {
         this.victims = new ArrayList<Victim>(victims);
     }
 
+    public ArrayList<String> exportVictims(){
+        ArrayList<String> victimExport = new ArrayList<>();
+        for (Victim victim : victims){
+            victimExport.add(victim.export());
+        }
+
+        return victimExport;
+    }
+
 }
