@@ -1,6 +1,9 @@
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
@@ -65,7 +68,6 @@ public class Main {
         for (int i = 1; i <= 10; i++) {
             victimPanels.add(new VictimPanel(i, victimPicker));
         }
-
         for (VictimPanel v : victimPanels) {
             frame.add(v);
             v.setVisible(false);
@@ -80,13 +82,12 @@ public class Main {
         frame.add(removeVictimButton);
 
         frame.repaint();
-
         // Add a window listener to dispose the frame
         // exports all data on close, stupid-proofing accidental closing
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                Actions.exportExportables(victimPicker);
+                Actions.exportExportables(victimPicker); // exports data on window close
                 e.getWindow().dispose();
             }
         });
