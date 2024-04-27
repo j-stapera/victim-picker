@@ -7,8 +7,8 @@ import java.util.ArrayList;
  * Contains a comparable interface that compares num picks of two victims
  */
 public class Victim implements Exportable, Comparable<Victim> {
-// TODO: Needs a interface called Victim and Exportable, too many dependencies on this class
-    //TODO: Make a method to export this data
+
+
     private String name;
     private int score;
     private Date lastPicked;
@@ -27,6 +27,13 @@ public class Victim implements Exportable, Comparable<Victim> {
     public Victim(String name){
         this.name = name;
         absences = new ArrayList<Date>();
+    }
+    public Victim(String name, int score, Date lastPicked, ArrayList<Date> absences, int numberOfPicks){
+        this.name = name;
+        this.score = score;
+        this.lastPicked = lastPicked;
+        this.absences = absences;
+        this.numberOfPicks = numberOfPicks;
     }
 
     //Setters
@@ -112,6 +119,6 @@ public class Victim implements Exportable, Comparable<Victim> {
     //method implemented from Exportable interface used to export the victim data
     @Override
     public String export() {
-        return "Name:" + name + "*Score:" + score + "*Last picked:" + lastPicked + "*Absent:" + isAbsent + "*Absences:" + absences + "*Number of picks:" + numberOfPicks;
+        return "Name:" + name + "*Score:" + score + "*Last picked:" + lastPicked + "*Absences:" + absences + "*Number of picks:" + numberOfPicks;
     }
 }
