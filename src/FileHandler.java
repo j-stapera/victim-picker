@@ -24,7 +24,13 @@ public class FileHandler {
         System.out.println(in.next());
 
         // program generated
-        // line containing variable:value combos, delimited by *
+        // each item in this array is a victim and their corresponding data
+        // data is seperated into two delimited segements
+        // * delimiter - seperates variable name:value combos
+        // : delimiter - seperates variable and values
+        // Example with uninitated values:
+        // Name:Channing Andrews*Score: 0*Last picked:null*Absent:false*Absences:[]*Number of picks:0
+        // victim vars order is: name*score*last picked*absent*absences*number of picks
 
         // user generated
         // line containing student first and last name, delimited by ,
@@ -40,7 +46,9 @@ public class FileHandler {
 
         return null;
     }
-    //does export
+
+    // does export
+    // currently only exports the victim data
     public static void Export(ArrayList<String> exportList) {
 
         File newFile = new File("Victims.txt");
@@ -59,6 +67,9 @@ public class FileHandler {
         }
         try(PrintWriter writer = new PrintWriter(new FileWriter(newFile))){
 
+            for (String item : exportList){
+                writer.println(item);
+            }
 
         } catch (IOException e) {
             System.err.println("Error writing to the file: Victim.txt");
