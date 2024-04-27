@@ -112,7 +112,6 @@ public class Victim implements Exportable, Comparable<Victim> {
     //method implemented from Exportable interface used to export the victim data
     @Override
     public String export() {
-
         return "Name:" + name + "*Score: " + score + "*Last picked:" + lastPicked + "*Absent:" + isAbsent + "*Absences:" + absences + "*Number of picks:" + numberOfPicks;
     }
 }
