@@ -1,3 +1,6 @@
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -11,9 +14,9 @@ public class Victim implements Exportable, Comparable<Victim> {
 
     private String name;
     private int score;
-    private Date lastPicked;
+    private LocalDate lastPicked;
     private boolean isAbsent = false;
-    private ArrayList<Date> absences;
+    private ArrayList<LocalDate> absences;
     private int numberOfPicks;
 
     /**
@@ -26,9 +29,9 @@ public class Victim implements Exportable, Comparable<Victim> {
     // TODO: Needs another constructor that allows for all vars to be filled
     public Victim(String name){
         this.name = name;
-        absences = new ArrayList<Date>();
+        absences = new ArrayList<LocalDate>();
     }
-    public Victim(String name, int score, Date lastPicked, ArrayList<Date> absences, int numberOfPicks){
+    public Victim(String name, int score, LocalDate lastPicked, ArrayList<LocalDate> absences, int numberOfPicks){
         this.name = name;
         this.score = score;
         this.lastPicked = lastPicked;
@@ -53,7 +56,7 @@ public class Victim implements Exportable, Comparable<Victim> {
     }
 
     public void setLastPicked(){
-        this.lastPicked = new Date();
+        this.lastPicked = LocalDate.now();
     }
 
     public void setNumberOfPicks(int numPicks){
@@ -71,11 +74,11 @@ public class Victim implements Exportable, Comparable<Victim> {
         return score;
     }
 
-    public Date getLastPicked(){
+    public LocalDate getLastPicked(){
         return lastPicked;
     }
 
-    public ArrayList<Date> getAbsences(){
+    public ArrayList<LocalDate> getAbsences(){
         return absences;
     }
 
@@ -88,7 +91,7 @@ public class Victim implements Exportable, Comparable<Victim> {
 
     //Method to add today's date to list of absences
     public void addAbsence(){
-        Date today = new Date();
+        LocalDate today = LocalDate.now();
         absences.add(today);
         isAbsent = true;
     }
