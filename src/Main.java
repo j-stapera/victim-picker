@@ -2,8 +2,6 @@
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
@@ -82,12 +80,13 @@ public class Main {
         frame.add(removeVictimButton);
 
         frame.repaint();
+
         // Add a window listener to dispose the frame
         // exports all data on close, stupid-proofing accidental closing
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                Actions.exportExportables(victimPicker); // exports data on window close
+                //Actions.exportExportables(victimPicker); // exports data on window close
                 e.getWindow().dispose();
             }
         });
@@ -98,5 +97,7 @@ public class Main {
         //Created new testframe to show bounds of new components - Connor
         TestFrame testFrame = new TestFrame(victimPicker);
 
+        //testing
+        FileHandler.importVictims();
     }
 }

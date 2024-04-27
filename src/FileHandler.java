@@ -5,30 +5,43 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileHandler {
     //does import
     public static ArrayList<Victim> importVictims(){
-        var in = new Scanner("Victims.txt");
+        try {
+            var in = new Scanner(Path.of("Victims.txt"));
+            in.useDelimiter("\n");
+            //get first line
+            // if first line is an L then it is program generated list
+            // else user generated
 
-        //get first line
-        // if first line is an L then it is program generated list
-        // else user generated
-        System.out.println(in.next());
+            //in.tokens().forEach(System.out::println);
+            List<Map<String,String>> victimStream = in.tokens()
+                .<Map<String,String>> mapMulti((victim, mapConsumer) -> {
 
+                    String[] victimParts = victim.split("[*]");
+                    Map<String, String> victimPieces = new HashMap<>();
+                    for (String victimPart : victimParts){
+                        String varName = victimPart.substring(0, victimPart.indexOf(':'));
+                        String varValue = victimPart.substring(victimPart.indexOf(':')+1);
+                        victimPieces.put(varName,varValue);
+                    }
+                    mapConsumer.accept(victimPieces);
+                })
+                .toList();
+        } catch(IOException e){
+            System.err.println("shit broke");
+        }
         // program generated
         // each item in this array is a victim and their corresponding data
-        // data is seperated into two delimited segements
-        // * delimiter - seperates variable name:value combos
-        // : delimiter - seperates variable and values
-        // Example with uninitated values:
+        // data is separated into two delimited segments
+        // * delimiter - separates variable name:value combos
+        // : delimiter - separates variable and values
+        // Example with uninitiated values:
         // Name:Channing Andrews*Score: 0*Last picked:null*Absent:false*Absences:[]*Number of picks:0
         // victim vars order is: name*score*last picked*absent*absences*number of picks
 
