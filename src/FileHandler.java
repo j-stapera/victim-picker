@@ -31,7 +31,7 @@ public class FileHandler {
                 // program generated list handling
                 // program generated
                 // each item in this array is a victim and their corresponding data
-                // data is separated into two delimited segments
+                // is separated into two delimited segments
                 // * delimiter - separates variable name:value combos
                 // : delimiter - separates variable and values
                 // Example with uninitiated values:
@@ -73,17 +73,21 @@ public class FileHandler {
                     ArrayList<LocalDate> absenceList = new ArrayList<>();
                     if (!victim.get("Absences").isEmpty()) {
                         String absences = victim.get("Absences");
-                        absences = absences.substring(1, absences.length() - 1);
+                        String[] absencesArray = absences.substring(1, absences.length() - 1).split(",");
+
+                        for (String absence : absencesArray){
+                            String[] absenceDate = absence.split("-");
+                            absenceList.add(LocalDate.of(Integer.parseInt(absenceDate[0]),Integer.parseInt(absenceDate[1]),Integer.parseInt(absenceDate[2])));
+                        }
                     }
 
                     // cast Last Picked to LocalDate
                     LocalDate lastPicked = null;
                     // only adds last picked date if last picked IS NOT null
                     if (!victim.get("Last picked").equals("null")) {
-                        String temp = victim.get("Last picked");
-                        String[] temp2 = temp.split("-"); //need to convert this to ints
+                        String[] date = victim.get("Last picked").split("-");
                         // date order is YYYY-MM-DD
-                        lastPicked = LocalDate.of(Integer.parseInt(temp2[0]), Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]));
+                        lastPicked = LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
                     }
 
                     // cast Score and Number of Picks to int
@@ -115,6 +119,7 @@ public class FileHandler {
     /**
      * Imports a user list of questions, one question per line
      * @return
+     * List of type string containing questions
      */
     public static List<String> importQuestions(){
         List<String> list = new ArrayList<>();
