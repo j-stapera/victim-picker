@@ -97,7 +97,5 @@ public class Main {
         //Created new testframe to show bounds of new components - Connor
         TestFrame testFrame = new TestFrame(victimPicker);
 
-        //testing
-        FileHandler.importVictims();
     }
 }

@@ -10,6 +10,7 @@ import java.util.*;
 
 
 public class FileHandler {
+
     //does import
     public static List<Victim> importVictims() {
 
@@ -91,6 +92,7 @@ public class FileHandler {
             // line containing student first and last name, delimited by \n
             } else {
                 victimList = in.tokens()
+                        .map(e-> e.replaceFirst("\r","")) //remove weird \r behavior
                         .map(Victim::new)
                         .toList();
             }
@@ -104,12 +106,22 @@ public class FileHandler {
     }
 
     public static List<String> importQuestions(){
-        var in = new Scanner("Questions.txt");
-        // questions delimited by \n
-        in.useDelimiter("\n");
+        List<String> list = new ArrayList<>();
+        try {
+            var in = new Scanner(Path.of("Questions.txt"));
+            // questions delimited by \n
+            in.useDelimiter("\n");
 
-        // tokenize the file and then put those questions to a list
-        return in.tokens().toList();
+            // tokenize the file and then put those questions to a list
+            list = in.tokens()
+                    .peek(System.out::println)
+                    .map(e-> e.replaceFirst("\r", "")) //remove weird \r that appears
+                    .toList();
+        } catch (IOException e){
+            System.err.println("Error importing Questions.txt");
+            e.printStackTrace();
+        }
+        return list;
     }
 
     // does export
