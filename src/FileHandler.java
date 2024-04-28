@@ -11,7 +11,13 @@ import java.util.*;
 
 public class FileHandler {
 
-    //does import
+    /**
+     * imports Victims, requires program generated list
+     * or user generated list in the format of name of victim
+     * and one victim per line
+     * @return
+     * List of type victim
+     */
     public static List<Victim> importVictims() {
 
         List<Victim> victimList = new ArrayList<>();
@@ -22,7 +28,7 @@ public class FileHandler {
             // if first line is an L then it is program generated list
             // else user generated
             if (in.nextLine().equals("L")) {
-
+                // program generated list handling
                 // program generated
                 // each item in this array is a victim and their corresponding data
                 // data is separated into two delimited segments
@@ -88,6 +94,7 @@ public class FileHandler {
                     // victim constructor: name, score, lastPicked, absences, numberOfPicks
                     victimList.add(new Victim(victimName, score, lastPicked, absenceList, numPicks));
                 }
+
             // user generated
             // line containing student first and last name, delimited by \n
             } else {
@@ -105,6 +112,10 @@ public class FileHandler {
         return victimList;
     }
 
+    /**
+     * Imports a user list of questions, one question per line
+     * @return
+     */
     public static List<String> importQuestions(){
         List<String> list = new ArrayList<>();
         try {
@@ -114,9 +125,8 @@ public class FileHandler {
 
             // tokenize the file and then put those questions to a list
             list = in.tokens()
-                    .peek(System.out::println)
                     .map(e-> e.replaceFirst("\r", "")) //remove weird \r that appears
-                    .toList();
+                    .toList(); //collects to list
         } catch (IOException e){
             System.err.println("Error importing Questions.txt");
             e.printStackTrace();
@@ -143,9 +153,9 @@ public class FileHandler {
             }
         }
         try(PrintWriter writer = new PrintWriter(new FileWriter(newFile))){
-
+            writer.println("L"); //signifies file is program generated
             for (String item : exportList){
-                writer.println(item);
+                writer.println(item); //writes line of list to file
             }
 
         } catch (IOException e) {
