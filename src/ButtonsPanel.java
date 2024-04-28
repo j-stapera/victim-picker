@@ -70,8 +70,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         //click again (on same name): absence removed
         //resets when new victim is chosen
         if (actionEvent.getSource() == markAbsentButton) {
-            //Actions.markAbsent(victimPicker);
-            victimPicker.markAbsent(victimPicker.getCurrentVictim());
+            Actions.markAbsent(victimPicker);
         }
     }
 

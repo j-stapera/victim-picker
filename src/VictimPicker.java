@@ -37,7 +37,6 @@ public class VictimPicker {
         int index = rand.nextInt(victims.size());
 
         pickedToday.add(victims.get(index));
-        //markAbsent(victims.get(index));
 
         currentVictim = victims.get(index);
         return currentVictim;
@@ -119,6 +118,7 @@ public class VictimPicker {
         //if victim is already marked absent, remove
         if(absentToday.contains(absentVictim)){
             absentToday.remove(absentVictim);
+            Actions.unmarkAbsent(absentVictim);
         }
         //else, add them to absent list
         else{

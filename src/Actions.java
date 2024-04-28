@@ -14,6 +14,11 @@ public class Actions {
 
     public static void markAbsent(VictimPicker vp) {
         vp.getCurrentVictim().addAbsence();
+        vp.markAbsent(vp.getCurrentVictim());
+    }
+
+    public static void unmarkAbsent (Victim victim){
+        victim.removeAbsence();
     }
 
     public static void toggleTimer(TimerLogic tl) {
