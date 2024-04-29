@@ -15,13 +15,13 @@ public class VictimPanel extends JPanel {
     private final int TopLeftCornerX = 225;
     private final int TopLeftCornerY = 100;
 
-    private JComboBox volunteer;
     private JLabel pointsText;
     private final int number;
 
     private Victim victim = new Victim("Pick Victim");
 
     private PickVictimButton pickVictimButton;
+    private VolunteerComboBox volunteer;
 
     //These values are dependent on the size of the VictimPanel Square (the space in which all victim panels reside)
     private final int TwoThreeFourPanelWidth = (OnePanelWidth/2) - PanelDistance;
@@ -38,15 +38,11 @@ public class VictimPanel extends JPanel {
         this.number = num;
         victimPicker = vp;
 
-        //need to get names from victimPicker then upload into volunteer box
-        String names[] = {"ruh", "moment", "epic", "gemera"};
-        volunteer = new JComboBox(names);
-        volunteer.setFocusable(false);
-
         pointsText = new JLabel("Points: 0");
         pointsText.setFocusable(false);
 
         //Create all the Buttons on the Panel
+        volunteer = new VolunteerComboBox(vp, this);
         AddPointButton addPointButton = new AddPointButton(this);
         RemovePointButton removePointButton = new RemovePointButton(this);
         MarkAbsentButton markAbsentButton = new MarkAbsentButton(this);
@@ -137,7 +133,7 @@ public class VictimPanel extends JPanel {
         pointsText.setVerticalAlignment(JLabel.CENTER);
 
 
-        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
+        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/7.0));
 
 
 
@@ -178,6 +174,7 @@ public class VictimPanel extends JPanel {
     public void updateVictimPanel() {
         pointsText.setText("Points: " + victim.getScore());
         pickVictimButton.setText(victim.getName());
+        volunteer.UpdateVolunteerList();
     }
 
 
