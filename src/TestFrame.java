@@ -4,8 +4,8 @@ public class TestFrame extends JFrame {
     /**
      * This is just a test frame for new components
      */
-
-    TestFrame(){
+    // victimPicker needed for exportbutton - Josh
+    TestFrame(VictimPicker vp){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1250,800);
         this.setLayout(null);
@@ -14,8 +14,7 @@ public class TestFrame extends JFrame {
         this.setResizable(false);
 
 
-
-        this.add(new ExportButton());
+        this.add(new ExportButton(vp));
         this.add(new ImportButton());
         this.add(new QuestionsButton());
         this.add(new QuestionsLabel());

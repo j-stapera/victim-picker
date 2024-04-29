@@ -1,3 +1,6 @@
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -7,14 +10,13 @@ import java.util.ArrayList;
  * Contains a comparable interface that compares num picks of two victims
  */
 public class Victim implements Exportable, Comparable<Victim> {
-// TODO: Needs a interface called Victim and Exportable, too many dependencies on this class
-    //TODO: Make a method to export this data
+
+
     private String name;
-    private static final int SECTION = 22199;
     private int score;
-    private Date lastPicked;
+    private LocalDate lastPicked;
     private boolean isAbsent = false;
-    private ArrayList<Date> absences;
+    private ArrayList<LocalDate> absences;
     private int numberOfPicks;
 
     /**
@@ -27,7 +29,14 @@ public class Victim implements Exportable, Comparable<Victim> {
     // TODO: Needs another constructor that allows for all vars to be filled
     public Victim(String name){
         this.name = name;
-        absences = new ArrayList<Date>();
+        absences = new ArrayList<LocalDate>();
+    }
+    public Victim(String name, int score, LocalDate lastPicked, ArrayList<LocalDate> absences, int numberOfPicks){
+        this.name = name;
+        this.score = score;
+        this.lastPicked = lastPicked;
+        this.absences = absences;
+        this.numberOfPicks = numberOfPicks;
     }
 
     //Setters
@@ -47,7 +56,7 @@ public class Victim implements Exportable, Comparable<Victim> {
     }
 
     public void setLastPicked(){
-        this.lastPicked = new Date();
+        this.lastPicked = LocalDate.now();
     }
 
     public void setNumberOfPicks(int numPicks){
@@ -60,19 +69,16 @@ public class Victim implements Exportable, Comparable<Victim> {
         return name;
     }
 
-    public int getSection(){
-        return SECTION;
-    }
 
     public int getScore(){
         return score;
     }
 
-    public Date getLastPicked(){
+    public LocalDate getLastPicked(){
         return lastPicked;
     }
 
-    public ArrayList<Date> getAbsences(){
+    public ArrayList<LocalDate> getAbsences(){
         return absences;
     }
 
@@ -85,7 +91,7 @@ public class Victim implements Exportable, Comparable<Victim> {
 
     //Method to add today's date to list of absences
     public void addAbsence(){
-        Date today = new Date();
+        LocalDate today = LocalDate.now();
         absences.add(today);
         isAbsent = true;
     }
@@ -115,8 +121,7 @@ public class Victim implements Exportable, Comparable<Victim> {
 
     //method implemented from Exportable interface used to export the victim data
     @Override
-    public String[] export() {
-        return new String[]{"Name: " + name + "*Section: " + SECTION + "*Score: " + score + "*Last picked:" + lastPicked + "*Absent: " + isAbsent + "*Absences: " + absences + "*Number of picks: " + numberOfPicks};
+    public String export() {
+        return "Name:" + name + "*Score:" + score + "*Last picked:" + lastPicked + "*Absences:" + absences + "*Number of picks:" + numberOfPicks;
     }
-//test
 }
