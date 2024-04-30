@@ -16,6 +16,8 @@ public class Frame extends JFrame  {
         this.setResizable(false);
 
     }
+
+    /*
     public void addScoreboardButton(ArrayList<Victim> victims) {
         JButton scoreboardButton = new JButton("Open Scoreboard");
         scoreboardButton.setBounds(10, 10, 150, 30);
@@ -32,4 +34,6 @@ public class Frame extends JFrame  {
         });
         this.add(scoreboardButton);
     }
+
+     */
 }
