@@ -7,6 +7,7 @@ import java.util.Comparator;
 public class ScoreboardPanel extends JPanel {
 
     private ArrayList<Victim> victims;
+    private ScoreboardButton sbButton;
 
     ScoreboardPanel(ArrayList<Victim> victims) {
         this.victims = victims;
@@ -19,6 +20,7 @@ public class ScoreboardPanel extends JPanel {
         JButton closeButton = new JButton("Close");
         closeButton.addActionListener(e -> {
             // Close the scoreboard panel when the close button is clicked
+            sbButton.setEnabled(true);  //toggle sbButton back on when scoreboard is closed
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
             topFrame.dispose();
         });
@@ -45,6 +47,12 @@ public class ScoreboardPanel extends JPanel {
 
         // Set the text of the scoreboard
         ((JTextArea) ((JScrollPane) getComponent(0)).getViewport().getView()).setText(scoreboardText.toString());
+    }
+
+    //Class needs a reference to the scoreboard button so it can toggle it
+    //back on when the scoreboard is closed
+    void setScoreboardButton(ScoreboardButton sbButton){
+        this.sbButton = sbButton;
     }
 
 }

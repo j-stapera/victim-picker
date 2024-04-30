@@ -9,7 +9,7 @@ public class PrizePanel extends JPanel implements ActionListener {
     JButton prizeButton;
 
     PrizePanel(){
-        this.setBounds(30,300,150,150);
+        this.setBounds(30,200,150,150);
         this.setLayout(null);
 
 

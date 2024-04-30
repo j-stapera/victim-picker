@@ -6,7 +6,7 @@ public class ExportButton extends JButton implements ActionListener {
     VictimPicker victimPicker;
     ExportButton(VictimPicker vp){
         victimPicker = vp;
-        this.setBounds(1035,0,200,50);
+        this.setBounds(985,0,200,50);
         this.setFocusable(false);
         this.addActionListener(this);
         this.setText("Export");

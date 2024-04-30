@@ -36,7 +36,7 @@ public class Main {
         }
 
         // Create a ScoreboardPanel instance
-        ScoreboardPanel scoreboardPanel = new ScoreboardPanel(students);
+        //ScoreboardPanel scoreboardPanel = new ScoreboardPanel(students);
 
         // Driver objects
         VictimPicker victimPicker = new VictimPicker(); // main driver for everything
@@ -47,7 +47,7 @@ public class Main {
 
         // Interactable objects
         VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
-        ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel, timerLabel, scoreboardPanel); // add point, remove point, timer buttons
+        //ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel, timerLabel, scoreboardPanel); // add point, remove point, timer buttons
         VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
 
         // Add them to a central frame
@@ -61,10 +61,19 @@ public class Main {
 
         //ADD YOUR TESTING COMPONENTS HERE
 
+
+        //Creating scoreboard components
+        ScoreboardPanel scoreboardPanel = new ScoreboardPanel(students);
+        ScoreboardFrame scoreboardFrame = new ScoreboardFrame(scoreboardPanel);
+        ScoreboardButton scoreboardButton = new ScoreboardButton(scoreboardFrame);
+        scoreboardPanel.setScoreboardButton(scoreboardButton);
+        frame.add(scoreboardButton);
+
+
         //Create ArrayList of every necessary VictimPanel
         ArrayList<VictimPanel> victimPanels = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            victimPanels.add(new VictimPanel(i, victimPicker));
+            victimPanels.add(new VictimPanel(i, victimPicker, scoreboardPanel));
         }
         for (VictimPanel v : victimPanels) {
             frame.add(v);
@@ -78,6 +87,32 @@ public class Main {
 
         RemoveVictimButton removeVictimButton = new RemoveVictimButton(victimNumber);
         frame.add(removeVictimButton);
+
+
+        ExportButton exportButton = new ExportButton(victimPicker);
+        ImportButton importButton = new ImportButton();
+        QuestionsButton questionsButton = new QuestionsButton();
+        QuestionsLabel questionsLabel = new QuestionsLabel();
+        PrizePanel prizePanel = new PrizePanel();
+
+        frame.add(exportButton);
+        frame.add(importButton);
+        frame.add(questionsButton);
+        frame.add(questionsLabel);
+        frame.add(prizePanel);
+
+        TimerLabel timerimerLabel = new TimerLabel();
+        // Puts timer label in different place in new frame
+        timerLabel.setBounds(1000,200,220,150);
+        TimerLogic timerLogic = new TimerLogic(timerLabel);
+        TimerButtonPanel timerButtons = new TimerButtonPanel(timerLabel);
+        timerButtons.setBounds(500,600,200,100);
+
+        frame.add(timerButtons);
+        frame.add(timerLabel);
+
+
+
 
         frame.repaint();
 
@@ -95,7 +130,7 @@ public class Main {
 
 
         //Created new testframe to show bounds of new components - Connor
-        TestFrame testFrame = new TestFrame(victimPicker);
+        //TestFrame testFrame = new TestFrame(victimPicker);
 
     }
 }

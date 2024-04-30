@@ -4,8 +4,10 @@ import java.awt.event.ActionListener;
 
 public class AddPointButton extends JButton implements ActionListener {
 
-    VictimPanel victimPanel;
-    AddPointButton(VictimPanel victimPanel) {
+    private VictimPanel victimPanel;
+    private ScoreboardPanel sbPanel;
+    AddPointButton(VictimPanel victimPanel, ScoreboardPanel sbPanel) {
+        this.sbPanel = sbPanel;
         this.victimPanel = victimPanel;
         this.setText("Add Point");
         this.addActionListener(this);
@@ -16,6 +18,7 @@ public class AddPointButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (victimPanel.getVictim().getName() != "Pick Victim") {
             Actions.addPoint(victimPanel.getVictim(), victimPanel);
+            Actions.updateScoreboard(sbPanel);
         }
 
     }

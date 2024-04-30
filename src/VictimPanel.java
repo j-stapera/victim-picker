@@ -12,7 +12,7 @@ public class VictimPanel extends JPanel {
     private final int PanelDistance = 5;
 
     //X and Y values for the top left coordinates of the VictimPanel Square (the space in which all victim panels reside)
-    private final int TopLeftCornerX = 225;
+    private final int TopLeftCornerX = 220;
     private final int TopLeftCornerY = 100;
 
     private JComboBox volunteer;
@@ -31,8 +31,9 @@ public class VictimPanel extends JPanel {
 
     private VictimPicker victimPicker;
 
+    private ScoreboardPanel sbPanel;    //reference to scoreboard so that scoreboard can be updated when needed
 
-    VictimPanel(int num, VictimPicker vp) {
+    VictimPanel(int num, VictimPicker vp, ScoreboardPanel sbPanel) {
         Font font1 = new Font("Arial", Font.BOLD, 20);
 
         this.number = num;
@@ -47,8 +48,9 @@ public class VictimPanel extends JPanel {
         pointsText.setFocusable(false);
 
         //Create all the Buttons on the Panel
-        AddPointButton addPointButton = new AddPointButton(this);
-        RemovePointButton removePointButton = new RemovePointButton(this);
+        this.sbPanel = sbPanel;     //addpoint/removepoint take scoreboard panel so that scoreboard can be updated when they are clicked
+        AddPointButton addPointButton = new AddPointButton(this, sbPanel);
+        RemovePointButton removePointButton = new RemovePointButton(this, sbPanel);
         MarkAbsentButton markAbsentButton = new MarkAbsentButton(this);
         pickVictimButton = new PickVictimButton(this);
 

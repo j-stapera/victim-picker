@@ -77,6 +77,10 @@ public class Actions {
     public static void exportExportables(VictimPicker vp){
         FileHandler.Export(vp.exportVictims());
     }
+
+    public static void updateScoreboard(ScoreboardPanel sbPanel){
+        sbPanel.updateScoreboard();
+    }
 }
 
 
