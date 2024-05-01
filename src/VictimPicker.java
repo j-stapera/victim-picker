@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.awt.*;
 public class VictimPicker {
@@ -20,15 +21,28 @@ public class VictimPicker {
     }
 
     public Victim chooseVictim(){
-        Collections.sort(victims);
-        Random rand = new Random();
+        //remove absent victims from being selected
+        victims.removeAll(absentToday);
 
-        int index = rand.nextInt(victims.size());
+        if (pickedToday.size() == victims.size()){
+            pickedToday.clear();
+        }
 
-        pickedToday.add(victims.get(index));
-        markAbsent(victims.get(index));
+        //TESTING
+        System.out.println("\nlist:");
+        for(Victim v : victims){
+            System.out.print(v.getName() + "  -  ");
+        }
+        System.out.println(" ");
 
-        currentVictim = victims.get(index);
+        //each victim is chosen at least ONCE
+        do {
+            Collections.shuffle(victims);
+            currentVictim = victims.getFirst();
+        } while(!pickedToday.contains(currentVictim));
+
+        pickedToday.add(currentVictim);
+
         return currentVictim;
     }
 
@@ -103,7 +117,24 @@ public class VictimPicker {
 
     //Mark students absent if they are not present
     public void markAbsent(Victim absentVictim){
-        absentToday.add(absentVictim);
+
+        //TOGGLE
+        //if victim is already marked absent, remove
+        if(absentToday.contains(absentVictim)){
+            absentToday.remove(absentVictim);
+            Actions.unmarkAbsent(absentVictim);
+        }
+        //else, add them to absent list
+        else{
+            absentToday.add(absentVictim);
+        }
+
+        //TESTING - displays all added to absentToday
+        System.out.println("\nAbsent:");
+        for(Victim v : absentToday){
+            System.out.print(v.getName() + " - ");
+        }
+        System.out.println("  ");
     }
 
     //Load roster of students into victims array

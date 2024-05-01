@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -88,6 +89,11 @@ public class Victim implements Exportable, Comparable<Victim> {
         Date today = new Date();
         absences.add(today);
         isAbsent = true;
+    }
+
+    public void removeAbsence(){
+        absences.remove(lastPicked);
+        isAbsent = false;
     }
 
     //returns bool for if a victim is absent
