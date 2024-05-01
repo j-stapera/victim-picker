@@ -39,7 +39,7 @@ public class VictimPicker {
         do {
             Collections.shuffle(victims);
             currentVictim = victims.getFirst();
-        } while(!pickedToday.contains(currentVictim));
+        } while(pickedToday.contains(currentVictim));
 
         pickedToday.add(currentVictim);
 
