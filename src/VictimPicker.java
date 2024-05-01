@@ -28,12 +28,6 @@ public class VictimPicker {
             pickedToday.clear();
         }
 
-//        //TESTING
-//        System.out.println("\nlist:");
-//        for(Victim v : victims){
-//            System.out.print(v.getName() + "  -  ");
-//        }
-//        System.out.println(" ");
 
         //each victim is chosen at least ONCE
         do {
@@ -59,8 +53,7 @@ public class VictimPicker {
      *   Essentially chooses two random students from the first half of the array when it is
     *    sorted in ascending order by number of picks.
      */
-    // TODO: fix picking behavior to have no repeats
-    //       until unpicked students have been picked
+
     public ArrayList<Victim> chooseTwo(){
         ArrayList<Victim> twoVictims = new ArrayList<>();
         Random rand = new Random();
@@ -129,12 +122,6 @@ public class VictimPicker {
             absentToday.add(absentVictim);
         }
 
-//        //TESTING - displays all added to absentToday
-//        System.out.println("\nAbsent:");
-//        for(Victim v : absentToday){
-//            System.out.print(v.getName() + " - ");
-//        }
-//        System.out.println("  ");
     }
 
     //Load roster of students into victims array
