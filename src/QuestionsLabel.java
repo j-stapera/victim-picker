@@ -6,7 +6,7 @@ public class QuestionsLabel extends JLabel {
 
     QuestionsLabel(){
         this.setText("What is the meaning of life?");
-        this.setBounds(250,25,750,50);
+        this.setBounds(220,25,750,50);
         this.setBorder(new LineBorder(Color.GRAY, 1));
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);
