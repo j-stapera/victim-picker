@@ -24,6 +24,10 @@ public class VictimPicker {
         //remove absent victims from being selected
         victims.removeAll(absentToday);
 
+        if (pickedToday.size() == victims.size()){
+            pickedToday.clear();
+        }
+
         //TESTING
         System.out.println("\nlist:");
         for(Victim v : victims){
@@ -31,14 +35,14 @@ public class VictimPicker {
         }
         System.out.println(" ");
 
-        Collections.sort(victims);
-        Random rand = new Random();
+        //start here
+        do {
+            Collections.shuffle(victims);
+            currentVictim = victims.getFirst();
+        } while(!pickedToday.contains(currentVictim));
 
-        int index = rand.nextInt(victims.size());
+        pickedToday.add(currentVictim);
 
-        pickedToday.add(victims.get(index));
-
-        currentVictim = victims.get(index);
         return currentVictim;
     }
 
