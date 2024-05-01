@@ -68,15 +68,24 @@ public class Actions {
         vl.updateText(vp.getCurrentVictim());
     }
 
-    public static void selectVolunteer(VictimPicker vp, VictimLabel vl, String selectedName, ArrayList<Victim> students) {
-        for (Victim student : students) {
+    public static void selectVolunteer(VictimPicker vp, String selectedName, VictimPanel vPanel) {
+        for (Victim student : vp.getVictims()) {
             if (student.getName().equals(selectedName)) {
+                vPanel.setVictim(student);
                 vp.setCurrentVictim(student);
                 vp.volunteerPT(student);
-                vl.updateText(student);
+                vPanel.updateVictimPanel();
                 break;
             }
         }
+    }
+
+    public static void exportExportables(VictimPicker vp){
+        FileHandler.Export(vp.exportVictims());
+    }
+
+    public static void updateScoreboard(ScoreboardPanel sbPanel){
+        sbPanel.updateScoreboard();
     }
 }
 

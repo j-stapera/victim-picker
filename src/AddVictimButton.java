@@ -13,7 +13,7 @@ public class AddVictimButton extends JButton implements ActionListener {
         this.numOfVictims = numOfVictims;
         //this.victimPanels = victimPanels;
 
-        this.setBounds(338,525,150,75);
+        this.setBounds(335,525,150,50);
         this.setFocusable(false);
         this.addActionListener(this);
         this.setText("Add Victim");

@@ -11,17 +11,18 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     private final TimerButtonPanel timerButtons;
     private final VictimPicker victimPicker;
     private final VictimLabel victimLabel;
+    private final ScoreboardPanel scoreboardPanel; // Add ScoreboardPanel reference
 
 
     /**
      * Creates a set of 4 clickable buttons (add point, remove point, mark absent, timer panel)
      * see TimerButtonPanel for info on timer panel
      */
-    // NOTE: may want to move timer panel out of buttons panel, at least in its declaration
-    //       instead possibly consider having it added to the panel in main
-    ButtonsPanel(VictimPicker vp, VictimLabel vl, TimerLabel timerLabel){
+    ButtonsPanel(VictimPicker vp, VictimLabel vl, TimerLabel timerLabel, ScoreboardPanel scoreboardPanel){ // Pass ScoreboardPanel reference
         this.victimPicker = vp;
         this.victimLabel = vl;
+        this.scoreboardPanel = scoreboardPanel; // Initialize ScoreboardPanel reference
+
         this.setBounds(125,525,750,150);
         this.setLayout(null);
         //this.setBackground(Color.BLACK);
@@ -55,15 +56,15 @@ public class ButtonsPanel extends JPanel implements ActionListener {
 
     }
 
-
-
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == addPointButton) {
             Actions.addPoint(victimPicker, victimLabel);
+            scoreboardPanel.updateScoreboard(); // Update scoreboard after adding point
         }
         if (actionEvent.getSource() == removePointButton) {
             Actions.removePoint(victimPicker, victimLabel);
+            scoreboardPanel.updateScoreboard(); // Update scoreboard after removing point
         }
         //toggle!
         //click once: absent
@@ -71,7 +72,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         //resets when new victim is chosen
         if (actionEvent.getSource() == markAbsentButton) {
             Actions.markAbsent(victimPicker);
+            scoreboardPanel.updateScoreboard(); // Update scoreboard after marking absent
         }
     }
-
 }

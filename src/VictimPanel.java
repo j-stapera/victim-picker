@@ -12,10 +12,10 @@ public class VictimPanel extends JPanel {
     private final int PanelDistance = 5;
 
     //X and Y values for the top left coordinates of the VictimPanel Square (the space in which all victim panels reside)
-    private final int TopLeftCornerX = 225;
+    private final int TopLeftCornerX = 220;
     private final int TopLeftCornerY = 100;
 
-    private JComboBox volunteer;
+    private VolunteerComboBox volunteer;
     private JLabel pointsText;
     private final int number;
 
@@ -31,24 +31,22 @@ public class VictimPanel extends JPanel {
 
     private VictimPicker victimPicker;
 
+    private ScoreboardPanel sbPanel;    //reference to scoreboard so that scoreboard can be updated when needed
 
-    VictimPanel(int num, VictimPicker vp) {
+    VictimPanel(int num, VictimPicker vp, ScoreboardPanel sbPanel) {
         Font font1 = new Font("Arial", Font.BOLD, 20);
 
         this.number = num;
         victimPicker = vp;
 
-        //need to get names from victimPicker then upload into volunteer box
-        String names[] = {"ruh", "moment", "epic", "gemera"};
-        volunteer = new JComboBox(names);
-        volunteer.setFocusable(false);
-
         pointsText = new JLabel("Points: 0");
         pointsText.setFocusable(false);
 
         //Create all the Buttons on the Panel
-        AddPointButton addPointButton = new AddPointButton(this);
-        RemovePointButton removePointButton = new RemovePointButton(this);
+        this.sbPanel = sbPanel;     //addpoint/removepoint take scoreboard panel so that scoreboard can be updated when they are clicked
+        AddPointButton addPointButton = new AddPointButton(this, sbPanel);
+        RemovePointButton removePointButton = new RemovePointButton(this, sbPanel);
+        volunteer = new VolunteerComboBox(vp, this);
         MarkAbsentButton markAbsentButton = new MarkAbsentButton(this);
         pickVictimButton = new PickVictimButton(this);
 
@@ -137,7 +135,7 @@ public class VictimPanel extends JPanel {
         pointsText.setVerticalAlignment(JLabel.CENTER);
 
 
-        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
+        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/7.0));
 
 
 
@@ -178,6 +176,7 @@ public class VictimPanel extends JPanel {
     public void updateVictimPanel() {
         pointsText.setText("Points: " + victim.getScore());
         pickVictimButton.setText(victim.getName());
+        volunteer.UpdateVolunteerList();
     }
 
 
