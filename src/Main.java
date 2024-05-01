@@ -47,9 +47,9 @@ public class Main {
         TimerLabel timerLabel = new TimerLabel(); // text for timer
 
         // Interactable objects
-        VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
+        //VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
         //ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel, timerLabel, scoreboardPanel); // add point, remove point, timer buttons
-        VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
+        //VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
 
         // Add them to a central frame
         Frame frame = new Frame();

@@ -15,7 +15,7 @@ public class VictimPanel extends JPanel {
     private final int TopLeftCornerX = 220;
     private final int TopLeftCornerY = 100;
 
-    private JComboBox volunteer;
+    private VolunteerComboBox volunteer;
     private JLabel pointsText;
     private final int number;
 
