@@ -28,12 +28,12 @@ public class VictimPicker {
             pickedToday.clear();
         }
 
-        //TESTING
-        System.out.println("\nlist:");
-        for(Victim v : victims){
-            System.out.print(v.getName() + "  -  ");
-        }
-        System.out.println(" ");
+//        //TESTING
+//        System.out.println("\nlist:");
+//        for(Victim v : victims){
+//            System.out.print(v.getName() + "  -  ");
+//        }
+//        System.out.println(" ");
 
         //each victim is chosen at least ONCE
         do {
@@ -129,12 +129,12 @@ public class VictimPicker {
             absentToday.add(absentVictim);
         }
 
-        //TESTING - displays all added to absentToday
-        System.out.println("\nAbsent:");
-        for(Victim v : absentToday){
-            System.out.print(v.getName() + " - ");
-        }
-        System.out.println("  ");
+//        //TESTING - displays all added to absentToday
+//        System.out.println("\nAbsent:");
+//        for(Victim v : absentToday){
+//            System.out.print(v.getName() + " - ");
+//        }
+//        System.out.println("  ");
     }
 
     //Load roster of students into victims array
