@@ -35,6 +35,7 @@ public class VictimPicker {
         }
         System.out.println(" ");
 
+        //each victim is chosen at least ONCE
         do {
             Collections.shuffle(victims);
             currentVictim = victims.getFirst();
