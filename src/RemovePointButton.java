@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +12,8 @@ public class RemovePointButton extends JButton implements ActionListener {
         this.setText("Remove Point");
         this.addActionListener(this);
         this.setFocusable(false);
+        //this.setFont(new Font("Times New Roman", Font.PLAIN,18));
+
     }
     @Override
     public void actionPerformed(ActionEvent e) {
