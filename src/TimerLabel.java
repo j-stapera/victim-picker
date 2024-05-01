@@ -13,7 +13,7 @@ public class TimerLabel extends JLabel{
         this.setBounds(625,340,220,150);
         this.setHorizontalAlignment(JLabel.LEFT);
         this.setVerticalAlignment(JLabel.NORTH);
-        this.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+        this.setFont(new Font("Times New Roman", Font.PLAIN, 35));
 
 
     }
