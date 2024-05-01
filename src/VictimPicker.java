@@ -35,7 +35,6 @@ public class VictimPicker {
         }
         System.out.println(" ");
 
-        //start here
         do {
             Collections.shuffle(victims);
             currentVictim = victims.getFirst();
