@@ -15,7 +15,7 @@ public class VictimPanel extends JPanel {
     private final int TopLeftCornerX = 220;
     private final int TopLeftCornerY = 100;
 
-    private JComboBox volunteer;
+    private VolunteerList volunteer;
     private JLabel pointsText;
     private final int number;
 
@@ -41,11 +41,12 @@ public class VictimPanel extends JPanel {
 
         //need to get names from victimPicker then upload into volunteer box
         String names[] = {"ruh", "moment", "epic", "gemera"};
-        volunteer = new JComboBox(names);
-        volunteer.setFocusable(false);
+
 
         pointsText = new JLabel("Points: 0");
         pointsText.setFocusable(false);
+        pointsText.setFont(new Font("Times New Roman", Font.PLAIN,20));
+
 
         //Create all the Buttons on the Panel
         this.sbPanel = sbPanel;     //addpoint/removepoint take scoreboard panel so that scoreboard can be updated when they are clicked
@@ -53,6 +54,7 @@ public class VictimPanel extends JPanel {
         RemovePointButton removePointButton = new RemovePointButton(this, sbPanel);
         MarkAbsentButton markAbsentButton = new MarkAbsentButton(this);
         pickVictimButton = new PickVictimButton(this);
+        pickVictimButton.setFont(new Font("Times New Roman", Font.PLAIN,18));
 
         //SET LOCAL VARIABLES SO THAT ALL STATEMENTS CAN BE COPIED AND PASTED
         int localX = 0, localY = 0, localWidth = 0, localHeight = 0;
@@ -139,7 +141,6 @@ public class VictimPanel extends JPanel {
         pointsText.setVerticalAlignment(JLabel.CENTER);
 
 
-        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
 
 
 
@@ -154,8 +155,14 @@ public class VictimPanel extends JPanel {
         this.add(pickVictimButton);
         this.add(pointsText);
 
+        //Add volunteer dropbox components
+        volunteer = new VolunteerList(vp, this);
+        volunteer.setFocusable(false);
+        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
         this.add(volunteer);
 
+        //Set intial text of the pick victim button to 'Pick Victim'
+        pickVictimButton.setText("Pick Victim");
 
 
     }

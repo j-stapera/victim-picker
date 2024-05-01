@@ -44,6 +44,11 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
         startTimerButton.setPreferredSize(new Dimension(100,50));
         resetTimerButton.setPreferredSize(new Dimension(100,50));
 
+        startTimerButton.setFocusable(false);
+        resetTimerButton.setFocusable(false);
+        addTimeButton.setFocusable(false);
+        removeTimeButton.setFocusable(false);
+
         this.add(startTimerButton, BorderLayout.WEST);
         this.add(resetTimerButton,BorderLayout.EAST);
         this.add(addTimeButton, BorderLayout.NORTH);

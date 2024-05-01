@@ -151,4 +151,8 @@ public class VictimPicker {
         return victimExport;
     }
 
+    public ArrayList<Victim> getVictims(){
+        return victims;
+    }
+
 }

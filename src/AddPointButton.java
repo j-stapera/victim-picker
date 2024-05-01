@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +13,8 @@ public class AddPointButton extends JButton implements ActionListener {
         this.setText("Add Point");
         this.addActionListener(this);
         this.setFocusable(false);
+        //this.setFont(new Font("Times New Roman", Font.PLAIN,15));
+
     }
 
     @Override
