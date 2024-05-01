@@ -91,8 +91,8 @@ public class Main {
 
         ExportButton exportButton = new ExportButton(victimPicker);
         ImportButton importButton = new ImportButton();
-        QuestionsButton questionsButton = new QuestionsButton();
         QuestionsLabel questionsLabel = new QuestionsLabel();
+        QuestionsButton questionsButton = new QuestionsButton(questionsLabel);
         PrizePanel prizePanel = new PrizePanel();
 
         frame.add(exportButton);

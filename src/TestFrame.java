@@ -16,7 +16,7 @@ public class TestFrame extends JFrame {
 
         this.add(new ExportButton(vp));
         this.add(new ImportButton());
-        this.add(new QuestionsButton());
+        //this.add(new QuestionsButton());
         this.add(new QuestionsLabel());
 
 
