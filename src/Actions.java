@@ -2,6 +2,27 @@ import java.util.ArrayList;
 
 public class Actions {
 
+
+    //Updated addPoint method that adds point to a passed in Victim
+    public static void addPoint(Victim v, VictimPanel vPanel) {
+        v.addScore();
+        vPanel.updateVictimPanel();
+    }
+    //Updated removePoint method that removes point from a passed in Victim
+    public static void removePoint(Victim v, VictimPanel vPanel) {
+        v.subtractScore();
+        vPanel.updateVictimPanel();
+    }
+    //Updated markAbsent method that marks the passed in Victim absent
+    public static void markAbsent(Victim v, VictimPanel vPanel) {
+        v.addAbsence();
+        vPanel.updateVictimPanel();
+    }
+    //Updated selectVictim method that interacts with VictimPanels
+    public static void selectVictim(VictimPicker vp, VictimPanel vPanel) {
+        vPanel.setVictim(vp.chooseVictim());
+        vPanel.updateVictimPanel();
+    }
     public static void addPoint(VictimPicker vp, VictimLabel vl) {
         vp.getCurrentVictim().addScore();
         vl.updateText(vp.getCurrentVictim());
@@ -56,6 +77,14 @@ public class Actions {
                 break;
             }
         }
+    }
+
+    public static void exportExportables(VictimPicker vp){
+        FileHandler.Export(vp.exportVictims());
+    }
+
+    public static void updateScoreboard(ScoreboardPanel sbPanel){
+        sbPanel.updateScoreboard();
     }
 }
 

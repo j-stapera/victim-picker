@@ -42,7 +42,9 @@ public class VolunteerComboBox extends JButton implements ActionListener {
         this.victimPicker.loadList(students);
 
         this.add(volunteerCB);
-
+        this.setBounds(400, 465,200,35);
+        this.setText("Volunteer");
+        this.setFocusable(false);
 
         volunteerCB.addActionListener(this);
     }
