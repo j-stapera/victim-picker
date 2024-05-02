@@ -25,6 +25,8 @@ public class VolunteerList extends JComboBox implements ActionListener {
         //Makes them easier to lookup in the dropbox
         victims.sort(Comparator.comparing(Victim::getName));
 
+        victims.add(0, new Victim("Pick Victim"));
+
         //Load each 'victim' into the dropbox
         for(Victim v : victims){
             this.addItem(v.getName());
