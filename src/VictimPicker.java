@@ -71,7 +71,7 @@ public class VictimPicker {
         //if victim is already marked absent, remove
         if(absentToday.contains(absentVictim)){
             absentToday.remove(absentVictim);
-            Actions.unmarkAbsent(absentVictim);
+            absentVictim.removeAbsence();
         }
         //else, add them to absent list
         else{
