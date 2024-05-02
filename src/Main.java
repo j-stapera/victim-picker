@@ -1,10 +1,7 @@
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Timer;
 
 /**
  * Driver class for VictimPicker w/ GUI

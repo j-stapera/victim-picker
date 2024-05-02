@@ -1,7 +1,4 @@
-import javax.swing.*;
-import java.sql.SQLOutput;
 import java.util.*;
-import java.awt.*;
 public class VictimPicker {
 
     private ArrayList<Victim> victims;
