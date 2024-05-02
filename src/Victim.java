@@ -58,9 +58,7 @@ public class Victim implements Exportable, Comparable<Victim> {
         this.lastPicked = LocalDate.now();
     }
 
-    public void setNumberOfPicks(int numPicks){
-        numberOfPicks = numPicks;
-    }
+    public void incrementPicks(){ this.numberOfPicks += 1;}
 
 
     //Getters

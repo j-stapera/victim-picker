@@ -13,6 +13,7 @@ public class VictimPicker {
         victims = new ArrayList<>();
         pickedToday = new ArrayList<>();
         absentToday = new ArrayList<>();
+        currentVictim = null;
     }
 
     //when volunteering set the victim manually
@@ -23,6 +24,14 @@ public class VictimPicker {
     public Victim chooseVictim(){
         //remove absent victims from being selected
         victims.removeAll(absentToday);
+
+        // if the curr victim isn't absent update their last picked
+        // checked for null in case this is the first time picker is ran
+        if (currentVictim != null && !currentVictim.isAbsent()){
+            currentVictim.setLastPicked();
+            currentVictim.incrementPicks();
+        }
+
 
         if (pickedToday.size() == victims.size()){
             pickedToday.clear();
@@ -36,7 +45,6 @@ public class VictimPicker {
         } while(pickedToday.contains(currentVictim));
 
         pickedToday.add(currentVictim);
-
         return currentVictim;
     }
 
