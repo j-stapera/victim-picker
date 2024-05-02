@@ -26,7 +26,6 @@ public class Victim implements Exportable, Comparable<Victim> {
      * name of victim
      */
     //Constructor
-    // TODO: Needs another constructor that allows for all vars to be filled
     public Victim(String name){
         this.name = name;
         absences = new ArrayList<LocalDate>();

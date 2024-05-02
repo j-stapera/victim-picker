@@ -68,13 +68,12 @@ public class Actions {
         vl.updateText(vp.getCurrentVictim());
     }
 
-    public static void selectVolunteer(VictimPicker vp, String selectedName, VictimPanel vPanel) {
-        for (Victim student : vp.getVictims()) {
+    public static void selectVolunteer(VictimPicker vp, VictimPanel vPanel, String selectedName, ArrayList<Victim> students) {
+        for (Victim student : students) {
             if (student.getName().equals(selectedName)) {
-                vPanel.setVictim(student);
                 vp.setCurrentVictim(student);
                 vp.volunteerPT(student);
-                vPanel.updateVictimPanel();
+                vPanel.setVictim(student);
                 break;
             }
         }
