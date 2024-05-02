@@ -41,6 +41,9 @@ public class QuestionsButton extends JPanel implements ActionListener {
         // creates new question picker attached to THIS
         // uses the questions from Questions.txt
         questionPicker = new QuestionPicker(FileHandler.importQuestions());
+
+        // have a question read when program is launched
+        ql.setText(questionPicker.chooseQuestion());
     }
 
     @Override
