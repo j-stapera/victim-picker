@@ -29,14 +29,14 @@ public class MarkAbsentButton extends JButton implements ActionListener {
                 Actions.unmarkAbsent(victimPanel.getVictim(),victimPanel);
                 this.setText("Mark Absent");
             }
-//            Timer timer = new Timer(2000, new ActionListener() {
-//                public void actionPerformed(ActionEvent evt) {
-//                    // Change the button text back to the original
-//                    thisButton.setText("Mark Absent");
-//                }
-//            });
-//            timer.setRepeats(false); // Only execute once
-//            timer.start();
+            Timer timer = new Timer(2000, new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    // Change the button text back to the original
+                    thisButton.setText("Mark Absent");
+                }
+            });
+            timer.setRepeats(false); // Only execute once
+            timer.start();
         }
     }
 }
