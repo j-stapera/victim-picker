@@ -1,42 +1,56 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Random;
 
-public class QuestionsButton extends JButton implements ActionListener {
 
+public class QuestionsButton extends JPanel implements ActionListener {
+
+    JButton questionsButton;
+    JButton backButton;
     QuestionsLabel ql;
-    ArrayList<String> questions = new ArrayList<>();
+    QuestionPicker questionPicker;
 
     QuestionsButton(QuestionsLabel ql){
         this.ql = ql;
-        this.setBounds(0,711,200,50);
+        this.setBounds(0,684,200,75);
         this.setFocusable(false);
-        this.addActionListener(this);
-        this.setText("Question");
+        this.setLayout(null);
+        //this.setBackground(Color.BLACK);
 
-        //Add example questions to list
-        questions.add("To java or not to java?");
-        questions.add("Why?");
-        questions.add("How?");
-        questions.add("When does this semester end?");
+        questionsButton = new JButton();
+        questionsButton.setBounds(0,25,200,50);
+        questionsButton.setFocusable(false);
+        questionsButton.addActionListener(this);
+        questionsButton.setText("Question");
+        this.add(questionsButton);
 
+        backButton = new JButton();
+        backButton.setBounds(0,0,100,25);
+        backButton.setFocusable(false);
+        backButton.addActionListener(this);
+        backButton.setText("Back");
+        this.add(backButton);
+
+
+        JButton back = new JButton("Back");
+        back.setBounds(0,661, 100, 25);
+
+        // creates new question picker attached to THIS
+        // uses the questions from Questions.txt
+        questionPicker = new QuestionPicker(FileHandler.importQuestions());
+
+        // have a question read when program is launched
+        ql.setText(questionPicker.chooseQuestion());
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==this){
-            //***This doesn't ensure that questions don't get picked twice yet
+        if(e.getSource()==questionsButton) {
+            ql.setText(questionPicker.chooseQuestion());
+        }
 
-            //Randomly get question from list and change text of the
-            //  questions label when button is clicked
-            //***This arraylist of questions would be imported from a file***
-            Random random = new Random();
-            int randomIndex = random.nextInt(questions.size());
-            String randomQuestion = questions.get(randomIndex);
-            ql.setText(randomQuestion);
+        if(e.getSource()==backButton){
+            ql.setText(questionPicker.getPreviousQuestion());
         }
     }
 }
