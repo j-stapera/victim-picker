@@ -83,6 +83,14 @@ public class Actions {
         FileHandler.Export(vp.exportVictims());
     }
 
+    public static void importVictims(VictimPicker vp){
+        vp.loadList(FileHandler.importVictims());
+    }
+
+    public static void importQuestions(QuestionPicker qp){
+        qp.loadQuestions(FileHandler.importQuestions());
+    }
+
     public static void updateScoreboard(ScoreboardPanel sbPanel){
         sbPanel.updateScoreboard();
     }
