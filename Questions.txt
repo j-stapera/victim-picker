@@ -2,3 +2,8 @@ What is the difference between hardware and software?
 Explain the concept of variables in programming.
 What is the purpose of a loop in programming?
 Describe the difference between an integer and a floating-point number.
+Who is Dr. Baarsch
+How is Dr. Baarsch
+Why is Dr. Baarsch
+How is Dr. Erdin
+Explain a linked list implementation.
