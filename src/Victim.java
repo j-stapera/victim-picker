@@ -83,18 +83,20 @@ public class Victim implements Exportable, Comparable<Victim> {
         return numberOfPicks;
     }
 
-
-
-
     //Method to add today's date to list of absences
     public void addAbsence(){
         LocalDate today = LocalDate.now();
-        absences.add(today);
+        // only adds absent if one does not exist for today
+        // for closing and reopening the same day
+        if (!absences.contains(today)) {
+            absences.add(today);
+        }
         isAbsent = true;
     }
 
     public void removeAbsence(){
-        absences.remove(lastPicked);
+        LocalDate today = LocalDate.now();
+        absences.remove(today);
         isAbsent = false;
     }
 
