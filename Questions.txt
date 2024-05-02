@@ -1,0 +1,4 @@
+What is the difference between hardware and software?
+Explain the concept of variables in programming.
+What is the purpose of a loop in programming?
+Describe the difference between an integer and a floating-point number.
