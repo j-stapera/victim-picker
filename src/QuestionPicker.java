@@ -1,17 +1,19 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class QuestionPicker {
 
-    private ArrayList<String> Questions;
+    private List<String> Questions;
 
-    String Question;
+    private String Question;
 
     private ArrayList<String> AlreadyAnswered;
 
-    public QuestionPicker(){
-        Questions = new ArrayList<>();
+    public QuestionPicker(List<String> Questions){
+        this.Questions = Questions;
+        Question = null;
 
     }
 
