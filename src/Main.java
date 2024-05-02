@@ -40,20 +40,26 @@ public class Main {
 
         // Driver objects
         VictimPicker victimPicker = new VictimPicker(); // main driver for everything
-        victimPicker.loadList(students);
 
         // Text display objects
         VictimLabel victimLabel = new VictimLabel(); // name of victim
         TimerLabel timerLabel = new TimerLabel(); // text for timer
 
         // Interactable objects
-        //VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
+        VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
         //ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel, timerLabel, scoreboardPanel); // add point, remove point, timer buttons
-        //VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
+        VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
 
         // Add them to a central frame
         Frame frame = new Frame();
 
+        //frame.add(button);
+        //frame.add(victimLabel);
+        //frame.add(panel);
+        //frame.add(volunteer);
+        //frame.add(timerLabel);
+
+        //ADD YOUR TESTING COMPONENTS HERE
 
 
         //Creating scoreboard components

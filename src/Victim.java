@@ -95,6 +95,11 @@ public class Victim implements Exportable, Comparable<Victim> {
         isAbsent = true;
     }
 
+    public void removeAbsence(){
+        absences.remove(lastPicked);
+        isAbsent = false;
+    }
+
     //returns bool for if a victim is absent
     public boolean isAbsent(){
         return isAbsent;
