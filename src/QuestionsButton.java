@@ -1,10 +1,7 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Random;
+
 
 public class QuestionsButton extends JPanel implements ActionListener {
 
