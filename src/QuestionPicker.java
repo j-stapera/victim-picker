@@ -5,30 +5,53 @@ import java.util.Random;
 
 public class QuestionPicker {
 
-    private List<String> Questions;
+    private ArrayList<String> questions;
+    private String currQuestion;
+    private ArrayList<String> alreadyAnswered;
+    boolean onPreviousQuestion;
 
-    private String Question;
-
-    private ArrayList<String> AlreadyAnswered;
-
-    public QuestionPicker(List<String> Questions){
-        this.Questions = Questions;
-        Question = null;
+    public QuestionPicker(ArrayList<String> questions){
+        this.questions = questions;
+        onPreviousQuestion = false;
+        currQuestion = "";
+        // creates an empty list
+        alreadyAnswered = new ArrayList<>();
 
     }
 
 
-    public String chooseQuestion(){
+    public String chooseQuestion() {
+        if (alreadyAnswered.size() == questions.size())
+            return "No more Questions";
 
-        Random rand = new Random();
+        if (onPreviousQuestion){
+            onPreviousQuestion = false;
+            return currQuestion;
+        }
 
-        int index = rand.nextInt(Questions.size());
+        do {
+            Collections.shuffle(questions);
+            currQuestion = questions.getFirst();
+        } while (alreadyAnswered.contains(currQuestion));
 
-        Question = Questions.get(index);
+        alreadyAnswered.add(currQuestion);
+        return currQuestion;
+    }
 
-        Questions.remove(index);
+    public String getPreviousQuestion(){
 
-        return Question;
+        // if we have reached the end of the questions
+        if (alreadyAnswered.size() == questions.size()){
+            return currQuestion;
+        // if we are in the middle of the questions
+        } else if (alreadyAnswered.size() > 1){
+            onPreviousQuestion = true;
+            // subtract 2, 1 because indexes count from zero, and 1 to get the previous index
+            int previousIndex = alreadyAnswered.size() - 2;
+            return alreadyAnswered.get(previousIndex);
+        }
+        // there is no previous question, return current instead
+        return currQuestion;
     }
 
 
