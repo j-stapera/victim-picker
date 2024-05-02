@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,7 +16,7 @@ public class RemovePointButton extends JButton implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (victimPanel.getVictim().getName() != "Pick Victim") {
+        if (!victimPanel.getVictim().getName().equals("Pick Victim")) {
             Actions.removePoint(victimPanel.getVictim(), victimPanel);
             Actions.updateScoreboard(sbPanel);
         }
