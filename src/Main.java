@@ -11,7 +11,6 @@ import java.util.Timer;
  */
 public class Main {
     public static void main(String[] args) {
-//TODO: DELETE ALL UNUSED CODE!!!!!!
         // Create a ScoreboardPanel instance
         //ScoreboardPanel scoreboardPanel = new ScoreboardPanel(students);
 
@@ -21,28 +20,9 @@ public class Main {
 
         QuestionPicker questionPicker = new QuestionPicker();
         Actions.importQuestions(questionPicker);
-        // Text display objects
-        VictimLabel victimLabel = new VictimLabel(); // name of victim
-        TimerLabel timerLabel = new TimerLabel(); // text for timer
 
-        //TODO: Determine if these are used anymore
-//        // Interactable objects
-//        VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
-//        //ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel, timerLabel, scoreboardPanel); // add point, remove point, timer buttons
-//        VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
-
-        // TODO: Determine if these are used anymore
         // Add them to a central frame
         Frame frame = new Frame();
-
-        //frame.add(button);
-        //frame.add(victimLabel);
-        //frame.add(panel);
-        //frame.add(volunteer);
-        //frame.add(timerLabel);
-
-        //ADD YOUR TESTING COMPONENTS HERE
-
 
         //Creating scoreboard components
         ScoreboardPanel scoreboardPanel = new ScoreboardPanel(victimPicker);
@@ -83,7 +63,7 @@ public class Main {
         frame.add(questionsLabel);
         frame.add(prizePanel);
 
-        TimerLabel timerimerLabel = new TimerLabel();
+        TimerLabel timerLabel = new TimerLabel();
         // Puts timer label in different place in new frame
         timerLabel.setBounds(1000,200,220,150);
         TimerLogic timerLogic = new TimerLogic(timerLabel);
@@ -92,9 +72,6 @@ public class Main {
 
         frame.add(timerButtons);
         frame.add(timerLabel);
-
-
-
 
         frame.repaint();
 
@@ -107,12 +84,5 @@ public class Main {
                 e.getWindow().dispose();
             }
         });
-
-        //frame.setVisible(true); 
-
-
-        //Created new testframe to show bounds of new components - Connor
-        //TestFrame testFrame = new TestFrame(victimPicker);
-
     }
 }
