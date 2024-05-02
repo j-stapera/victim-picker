@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class ScoreboardPanel extends JPanel {
@@ -39,8 +38,8 @@ public class ScoreboardPanel extends JPanel {
         victims.sort(Comparator.comparingInt(Victim::getScore).reversed());
 
         // Display top five victims in the scoreboard
-        StringBuilder scoreboardText = new StringBuilder("Top Five Victims:\n");
-        for (int i = 0; i < Math.min(5, victims.size()); i++) {
+        StringBuilder scoreboardText = new StringBuilder("Scoreboard:\n");
+        for (int i = 0; i < Math.min(victimPicker.getVictims().size(), victims.size()); i++) {
             Victim victim = victims.get(i);
             scoreboardText.append(String.format("%d. %s | Score: %d\n",
                     i + 1, victim.getName(), victim.getScore()));

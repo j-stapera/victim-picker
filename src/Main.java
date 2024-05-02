@@ -1,19 +1,12 @@
-
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Timer;
 
 /**
  * Driver class for VictimPicker w/ GUI
  */
 public class Main {
     public static void main(String[] args) {
-        // Create a ScoreboardPanel instance
-        //ScoreboardPanel scoreboardPanel = new ScoreboardPanel(students);
-
         // Driver objects
         VictimPicker victimPicker = new VictimPicker(); // main driver for everything
         Actions.importVictims(victimPicker); // load victims into victim picker
@@ -80,7 +73,7 @@ public class Main {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                //Actions.exportExportables(victimPicker); // exports data on window close
+                Actions.exportExportables(victimPicker); // exports data on window close
                 e.getWindow().dispose();
             }
         });

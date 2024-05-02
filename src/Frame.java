@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.util.ArrayList;
+
 
 public class Frame extends JFrame  {
 
@@ -9,6 +9,7 @@ public class Frame extends JFrame  {
      */
     Frame(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("Victim Picker v2.0");
         this.setSize(1200,800);
         this.setLayout(null);
         this.setVisible(true);
