@@ -60,6 +60,7 @@ public class Actions {
                 vp.setCurrentVictim(student);
                 vp.volunteerPT(student);
                 vPanel.setVictim(student);
+                vPanel.updateVictimPanel();
                 break;
             }
         }
