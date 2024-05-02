@@ -63,7 +63,7 @@ public class VictimPicker {
 
 
 
-
+    // technically not used as victim is directly access most of the time
     //Mark students absent if they are not present
     public void markAbsent(Victim absentVictim){
 
