@@ -10,8 +10,9 @@ public class QuestionsButton extends JPanel implements ActionListener {
     QuestionsLabel ql;
     QuestionPicker questionPicker;
 
-    QuestionsButton(QuestionsLabel ql){
+    QuestionsButton(QuestionsLabel ql, QuestionPicker qp){
         this.ql = ql;
+        this.questionPicker = qp;
         this.setBounds(0,684,200,75);
         this.setFocusable(false);
         this.setLayout(null);
@@ -35,9 +36,7 @@ public class QuestionsButton extends JPanel implements ActionListener {
         JButton back = new JButton("Back");
         back.setBounds(0,661, 100, 25);
 
-        // creates new question picker attached to THIS
-        // uses the questions from Questions.txt
-        questionPicker = new QuestionPicker(FileHandler.importQuestions());
+
 
         // have a question read when program is launched
         ql.setText(questionPicker.chooseQuestion());

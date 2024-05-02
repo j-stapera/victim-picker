@@ -3,8 +3,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ImportButton extends JButton implements ActionListener {
-
-    ImportButton(){
+    VictimPicker vp;
+    QuestionPicker qp;
+    ImportButton(VictimPicker vp, QuestionPicker qp){
+        this.vp = vp;
+        this.qp = qp;
         this.setBounds(0,0,200,50);
         this.setFocusable(false);
         this.addActionListener(this);
@@ -14,6 +17,8 @@ public class ImportButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==this){
+            Actions.importVictims(vp);
+            Actions.importQuestions(qp);
             //action to import stuff to file(s)
         }
     }

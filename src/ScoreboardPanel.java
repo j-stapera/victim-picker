@@ -6,11 +6,11 @@ import java.util.Comparator;
 
 public class ScoreboardPanel extends JPanel {
 
-    private ArrayList<Victim> victims;
+    private VictimPicker victimPicker;
     private ScoreboardButton sbButton;
 
-    ScoreboardPanel(ArrayList<Victim> victims) {
-        this.victims = victims;
+    ScoreboardPanel(VictimPicker vp) {
+        this.victimPicker = vp;
         setLayout(new BorderLayout());
 
         // Create and initialize the scoreboard components
@@ -35,6 +35,7 @@ public class ScoreboardPanel extends JPanel {
 
     void updateScoreboard() {
         // Sort victims based on their scores
+        ArrayList<Victim> victims = victimPicker.getVictims(); // retrieve victim list
         victims.sort(Comparator.comparingInt(Victim::getScore).reversed());
 
         // Display top five victims in the scoreboard

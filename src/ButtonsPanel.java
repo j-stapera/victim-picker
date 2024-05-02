@@ -59,11 +59,11 @@ public class ButtonsPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == addPointButton) {
-            Actions.addPoint(victimPicker, victimLabel);
+            //Actions.addPoint(victimPicker, victimLabel);
             scoreboardPanel.updateScoreboard(); // Update scoreboard after adding point
         }
         if (actionEvent.getSource() == removePointButton) {
-            Actions.removePoint(victimPicker, victimLabel);
+            //Actions.removePoint(victimPicker, victimLabel);
             scoreboardPanel.updateScoreboard(); // Update scoreboard after removing point
         }
         //toggle!
@@ -71,7 +71,7 @@ public class ButtonsPanel extends JPanel implements ActionListener {
         //click again (on same name): absence removed
         //resets when new victim is chosen
         if (actionEvent.getSource() == markAbsentButton) {
-            Actions.markAbsent(victimPicker);
+            //Actions.markAbsent(victimPicker);
             scoreboardPanel.updateScoreboard(); // Update scoreboard after marking absent
         }
     }

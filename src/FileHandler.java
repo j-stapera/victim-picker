@@ -19,9 +19,9 @@ public class FileHandler {
      * @return
      * List of type victim
      */
-    public static List<Victim> importVictims() {
+    public static ArrayList<Victim> importVictims() {
 
-        List<Victim> victimList = new ArrayList<>();
+        ArrayList<Victim> victimList = new ArrayList<>();
         try {
             var in = new Scanner(Path.of("Victims.txt"));
             in.useDelimiter("\n");
@@ -72,9 +72,9 @@ public class FileHandler {
                     // convert vars to their proper types
                     // Cast absences to ArrayList<LocalDate>
                     ArrayList<LocalDate> absenceList = new ArrayList<>();
-                    if (!victim.get("Absences").isEmpty()) {
+                    if (!victim.get("Absences").equals("[]")) {
                         String absences = victim.get("Absences");
-                        String[] absencesArray = absences.substring(1, absences.length() - 1).split(",");
+                        String[] absencesArray = absences.substring(1, absences.length() - 1).split(", ");
 
                         for (String absence : absencesArray){
                             String[] absenceDate = absence.split("-");

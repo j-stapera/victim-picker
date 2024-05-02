@@ -13,6 +13,7 @@ public class VictimPicker {
         victims = new ArrayList<>();
         pickedToday = new ArrayList<>();
         absentToday = new ArrayList<>();
+        currentVictim = null;
     }
 
     //when volunteering set the victim manually
@@ -23,6 +24,14 @@ public class VictimPicker {
     public Victim chooseVictim(){
         //remove absent victims from being selected
         victims.removeAll(absentToday);
+
+        // if the curr victim isn't absent update their last picked
+        // checked for null in case this is the first time picker is ran
+        if (currentVictim != null && !currentVictim.isAbsent()){
+            currentVictim.setLastPicked();
+            currentVictim.incrementPicks();
+        }
+
 
         if (pickedToday.size() == victims.size()){
             pickedToday.clear();
@@ -36,7 +45,6 @@ public class VictimPicker {
         } while(pickedToday.contains(currentVictim));
 
         pickedToday.add(currentVictim);
-
         return currentVictim;
     }
 
@@ -45,50 +53,6 @@ public class VictimPicker {
         return currentVictim;
     }
 
-    /**
-    *    Method to choose two random victims, prioritizing those with
-    *    the lowest number of picks. <p>
-     *   Done by sorting the array of victims by number of picks and randomly generating two unique integers
-    *    between 0 and half of the size of the array. <p>
-     *   Essentially chooses two random students from the first half of the array when it is
-    *    sorted in ascending order by number of picks.
-     */
-
-    public ArrayList<Victim> chooseTwo(){
-        ArrayList<Victim> twoVictims = new ArrayList<>();
-        Random rand = new Random();
-
-        //Sort array of victims
-        Collections.sort(victims);
-
-        //Generate two random indexes
-        int index1 = rand.nextInt(victims.size() / 2);
-        int index2 = rand.nextInt(victims.size() / 2);
-
-        //Change second index if it is the same as first to make both unique
-        while(index1 == index2){
-            index2 = rand.nextInt(victims.size() / 2);
-        }
-
-        //Load victims into arraylist of two victims
-        twoVictims.add(victims.get(index1));
-        twoVictims.add(victims.get(index2));
-
-
-        //Add victims to the 'pickedToday' array
-        pickedToday.add(victims.get(index1));
-        pickedToday.add(victims.get(index2));
-
-        //Add all absent students to 'absentToday' array
-        for(int i = 0; i < victims.size(); i++){
-            if(victims.get(i).isAbsent()){
-                markAbsent(victims.get(i));
-            }
-        }
-
-        //Return victims
-        return twoVictims;
-    }
 
     //add volunteer victim to the picked today list
     public void volunteerPT(Victim student){
@@ -98,16 +62,8 @@ public class VictimPicker {
     }
 
 
-    //Increment the score of those who were chosen and update when they were last picked
-    // TODO: May not be needed anymore??
-    public void increaseScore(int points){
-        for(int i = 0; i < pickedToday.size(); i++){
-            pickedToday.get(i).setScore(pickedToday.get(i).getScore() + 1);
-            pickedToday.get(i).setLastPicked();
-        }
 
-    }
-
+    // technically not used as victim is directly access most of the time
     //Mark students absent if they are not present
     public void markAbsent(Victim absentVictim){
 
@@ -115,7 +71,7 @@ public class VictimPicker {
         //if victim is already marked absent, remove
         if(absentToday.contains(absentVictim)){
             absentToday.remove(absentVictim);
-            Actions.unmarkAbsent(absentVictim);
+            absentVictim.removeAbsence();
         }
         //else, add them to absent list
         else{
@@ -126,11 +82,13 @@ public class VictimPicker {
 
     //Load roster of students into victims array
     public void loadList(ArrayList<Victim> victims){
-        this.victims = new ArrayList<Victim>(victims);
+        this.victims = victims;
+        this.pickedToday.clear();
     }
 
     public ArrayList<String> exportVictims(){
         ArrayList<String> victimExport = new ArrayList<>();
+        //
         for (Victim victim : victims){
             victimExport.add(victim.export());
         }

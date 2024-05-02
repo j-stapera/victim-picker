@@ -18,29 +18,20 @@ public class Actions {
         v.addAbsence();
         vPanel.updateVictimPanel();
     }
+    // removes an absence from a victim
+    // typically used when a victim is accidentally marked absent
+    public static void unmarkAbsent (Victim victim, VictimPanel victimPanel){
+        victim.removeAbsence();
+        victimPanel.updateVictimPanel();
+    }
     //Updated selectVictim method that interacts with VictimPanels
     public static void selectVictim(VictimPicker vp, VictimPanel vPanel) {
         vPanel.setVictim(vp.chooseVictim());
         vPanel.updateVictimPanel();
     }
-    public static void addPoint(VictimPicker vp, VictimLabel vl) {
-        vp.getCurrentVictim().addScore();
-        vl.updateText(vp.getCurrentVictim());
-    }
 
-    public static void removePoint(VictimPicker vp, VictimLabel vl) {
-        vp.getCurrentVictim().subtractScore();
-        vl.updateText(vp.getCurrentVictim());
-    }
 
-    public static void markAbsent(VictimPicker vp) {
-        vp.getCurrentVictim().addAbsence();
-        vp.markAbsent(vp.getCurrentVictim());
-    }
 
-    public static void unmarkAbsent (Victim victim){
-        victim.removeAbsence();
-    }
 
     public static void toggleTimer(TimerLogic tl) {
         if (tl.isRunning()) {
@@ -63,17 +54,13 @@ public class Actions {
         tl.resetTimer();
     }
 
-    public static void selectVictim(VictimPicker vp, VictimLabel vl) {
-        vp.chooseVictim();
-        vl.updateText(vp.getCurrentVictim());
-    }
-
     public static void selectVolunteer(VictimPicker vp, VictimPanel vPanel, String selectedName, ArrayList<Victim> students) {
         for (Victim student : students) {
             if (student.getName().equals(selectedName)) {
                 vp.setCurrentVictim(student);
                 vp.volunteerPT(student);
                 vPanel.setVictim(student);
+                vPanel.updateVictimPanel();
                 break;
             }
         }
@@ -81,6 +68,14 @@ public class Actions {
 
     public static void exportExportables(VictimPicker vp){
         FileHandler.Export(vp.exportVictims());
+    }
+
+    public static void importVictims(VictimPicker vp){
+        vp.loadList(FileHandler.importVictims());
+    }
+
+    public static void importQuestions(QuestionPicker qp){
+        qp.loadQuestions(FileHandler.importQuestions());
     }
 
     public static void updateScoreboard(ScoreboardPanel sbPanel){
