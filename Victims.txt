@@ -1,35 +1,35 @@
 L
-Name:Channing Andrews*Score:0*Last picked:null*Absences:[]*Number of picks:0
+Name:Markie Salzwedel*Score:25*Last picked:null*Absences:[]*Number of picks:0
+Name:Channing Andrews*Score:16*Last picked:null*Absences:[]*Number of picks:0
+Name:Chuckie Koch*Score:15*Last picked:2024-05-02*Absences:[]*Number of picks:2
+Name:Jeremiah Jordan*Score:10*Last picked:null*Absences:[]*Number of picks:0
+Name:Dakotah Sutton-Rodriguez*Score:8*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Josh Stapera*Score:6*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Jace Kramer*Score:6*Last picked:2024-05-02*Absences:[2024-05-02]*Number of picks:1
+Name:Excalibur Bunker*Score:5*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Vincent Climer*Score:5*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Nicholas Gilleran*Score:4*Last picked:null*Absences:[]*Number of picks:0
+Name:Heather Watson*Score:4*Last picked:2024-05-02*Absences:[2024-05-02]*Number of picks:1
+Name:Nate Benson*Score:3*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Matthew McCallister*Score:3*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Connor Myers*Score:3*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Gavin Smith*Score:3*Last picked:2024-05-02*Absences:[2024-05-02, 2024-05-02]*Number of picks:1
+Name:Bret Kagebein*Score:3*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Reagan Kohler*Score:3*Last picked:null*Absences:[]*Number of picks:0
+Name:Canon Shaw*Score:3*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Akhil John Bosco*Score:2*Last picked:null*Absences:[]*Number of picks:0
+Name:Nate Bittle*Score:0*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Seth Garner*Score:0*Last picked:2024-05-02*Absences:[]*Number of picks:1
 Name:Danny Barmanbekov*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Nate Benson*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Nate Bittle*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Excalibur Bunker*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Vincent Climer*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Nicholas Colet*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Fabrice Faustin*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Seth Garner*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Nicholas Gilleran*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Hunter Henderson*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Akhil John Bosco*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Jeremiah Jordan*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Bret Kagebein*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Owen Kiilsgaard*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Chuckie Koch*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Reagan Kohler*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Jace Kramer*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Levi Landers*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Abraham Martinez Brito*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Chandler Mason*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Matthew McCallister*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Connor Myers*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Oluwatobiloba Olaoye*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Connor Parr*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Markie Salzwedel*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Canon Shaw*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Gavin Smith*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Josh Stapera*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Justin Stauffer*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Kevin Stinnett*Score:0*Last picked:null*Absences:[]*Number of picks:0
+Name:Fabrice Faustin*Score:0*Last picked:2024-05-02*Absences:[]*Number of picks:1
 Name:Ethan Stucker*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Dakotah Sutton-Rodriguez*Score:0*Last picked:null*Absences:[]*Number of picks:0
-Name:Heather Watson*Score:0*Last picked:null*Absences:[]*Number of picks:0
+Name:Owen Kiilsgaard*Score:0*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Nicholas Colet*Score:0*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Connor Parr*Score:0*Last picked:null*Absences:[]*Number of picks:0
+Name:Levi Landers*Score:0*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Chandler Mason*Score:0*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Hunter Henderson*Score:0*Last picked:null*Absences:[]*Number of picks:0
+Name:Justin Stauffer*Score:0*Last picked:null*Absences:[]*Number of picks:0
+Name:Oluwatobiloba Olaoye*Score:0*Last picked:null*Absences:[]*Number of picks:0
+Name:Kevin Stinnett*Score:0*Last picked:2024-05-02*Absences:[]*Number of picks:1
+Name:Abraham Martinez Brito*Score:-5*Last picked:2024-05-02*Absences:[2024-05-02]*Number of picks:1
