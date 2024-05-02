@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.awt.*;
 public class VictimPicker {
@@ -20,15 +21,22 @@ public class VictimPicker {
     }
 
     public Victim chooseVictim(){
-        Collections.sort(victims);
-        Random rand = new Random();
+        //remove absent victims from being selected
+        victims.removeAll(absentToday);
 
-        int index = rand.nextInt(victims.size());
+        if (pickedToday.size() == victims.size()){
+            pickedToday.clear();
+        }
 
-        pickedToday.add(victims.get(index));
-        markAbsent(victims.get(index));
 
-        currentVictim = victims.get(index);
+        //each victim is chosen at least ONCE
+        do {
+            Collections.shuffle(victims);
+            currentVictim = victims.getFirst();
+        } while(pickedToday.contains(currentVictim));
+
+        pickedToday.add(currentVictim);
+
         return currentVictim;
     }
 
@@ -45,8 +53,7 @@ public class VictimPicker {
      *   Essentially chooses two random students from the first half of the array when it is
     *    sorted in ascending order by number of picks.
      */
-    // TODO: fix picking behavior to have no repeats
-    //       until unpicked students have been picked
+
     public ArrayList<Victim> chooseTwo(){
         ArrayList<Victim> twoVictims = new ArrayList<>();
         Random rand = new Random();
@@ -103,7 +110,18 @@ public class VictimPicker {
 
     //Mark students absent if they are not present
     public void markAbsent(Victim absentVictim){
-        absentToday.add(absentVictim);
+
+        //TOGGLE
+        //if victim is already marked absent, remove
+        if(absentToday.contains(absentVictim)){
+            absentToday.remove(absentVictim);
+            Actions.unmarkAbsent(absentVictim);
+        }
+        //else, add them to absent list
+        else{
+            absentToday.add(absentVictim);
+        }
+
     }
 
     //Load roster of students into victims array

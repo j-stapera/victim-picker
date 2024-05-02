@@ -66,6 +66,10 @@ public class ButtonsPanel extends JPanel implements ActionListener {
             Actions.removePoint(victimPicker, victimLabel);
             scoreboardPanel.updateScoreboard(); // Update scoreboard after removing point
         }
+        //toggle!
+        //click once: absent
+        //click again (on same name): absence removed
+        //resets when new victim is chosen
         if (actionEvent.getSource() == markAbsentButton) {
             Actions.markAbsent(victimPicker);
             scoreboardPanel.updateScoreboard(); // Update scoreboard after marking absent

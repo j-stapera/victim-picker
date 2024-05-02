@@ -26,7 +26,6 @@ public class Victim implements Exportable, Comparable<Victim> {
      * name of victim
      */
     //Constructor
-    // TODO: Needs another constructor that allows for all vars to be filled
     public Victim(String name){
         this.name = name;
         absences = new ArrayList<LocalDate>();
@@ -94,6 +93,11 @@ public class Victim implements Exportable, Comparable<Victim> {
         LocalDate today = LocalDate.now();
         absences.add(today);
         isAbsent = true;
+    }
+
+    public void removeAbsence(){
+        absences.remove(lastPicked);
+        isAbsent = false;
     }
 
     //returns bool for if a victim is absent
