@@ -1,4 +1,3 @@
-
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.Instant;
@@ -11,9 +10,6 @@ import java.util.Timer;
  */
 public class Main {
     public static void main(String[] args) {
-        // Create a ScoreboardPanel instance
-        //ScoreboardPanel scoreboardPanel = new ScoreboardPanel(students);
-
         // Driver objects
         VictimPicker victimPicker = new VictimPicker(); // main driver for everything
         Actions.importVictims(victimPicker); // load victims into victim picker
