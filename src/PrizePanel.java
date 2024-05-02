@@ -51,8 +51,17 @@ public class PrizePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == classPoll) {
-            //Still not sure how exactly we wanted this to work
-            //Toggle on and off? Keep track of who uses which lifelines?
+            classPoll.setEnabled(false);
         }
+        if (actionEvent.getSource() == getOutOfJail){
+            getOutOfJail.setEnabled(false);
+        }
+        if (actionEvent.getSource() == phoneFriend){
+            phoneFriend.setEnabled(false);
+        }
+        if (actionEvent.getSource() == doubleNothing){
+            doubleNothing.setEnabled(false);
+        }
+
     }
 }
