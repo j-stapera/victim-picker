@@ -9,8 +9,8 @@ public class QuestionPicker {
     private ArrayList<String> alreadyAnswered;
     boolean onPreviousQuestion;
 
-    public QuestionPicker(ArrayList<String> questions){
-        this.questions = questions;
+    public QuestionPicker(){
+        this.questions = new ArrayList<>();
         onPreviousQuestion = false;
         currQuestion = "";
         // creates an empty list
@@ -21,7 +21,7 @@ public class QuestionPicker {
 
     public String chooseQuestion() {
         if (alreadyAnswered.size() == questions.size())
-            return "No more Questions";
+            return "No more questions";
 
         if (onPreviousQuestion){
             onPreviousQuestion = false;
@@ -53,6 +53,9 @@ public class QuestionPicker {
         return currQuestion;
     }
 
-
+    public void loadQuestions(ArrayList<String> questions){
+        this.questions = questions;
+        this.alreadyAnswered.clear(); //reset already answered
+    }
 
 }
