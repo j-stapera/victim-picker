@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class FileHandler {
@@ -38,7 +39,7 @@ public class FileHandler {
                 // Name:Channing Andrews*Score: 0*Last picked:null*Absent:false*Absences:[]*Number of picks:0
 
                 // NOTE: I realize that this may be an improper use of Streams, but it's cleaner
-                List<Map<String, String>> victimStream = in.tokens() // tokenize file based on \n delimiter, returns Stream<String>
+                ArrayList<Map<String, String>> victimStream = in.tokens() // tokenize file based on \n delimiter, returns Stream<String>
                         .<Map<String, String>>mapMulti((victim, mapConsumer) -> { //creates a Stream<Map<String,String>>
                             String[] victimParts = victim.split("[*]"); //splits into name:value pairs
                             Map<String, String> victimPieces = new HashMap<>();
@@ -57,7 +58,7 @@ public class FileHandler {
                             // add map to Stream
                             mapConsumer.accept(victimPieces);
                         })
-                        .toList(); // collect Stream<Map<String,String>> into an ArrayList<Map<String,String>>
+                        .collect(Collectors.toCollection(ArrayList::new)); // collect Stream<Map<String,String>> into an ArrayList<Map<String,String>>
                 // close file
                 in.close();
 
@@ -105,7 +106,7 @@ public class FileHandler {
                 victimList = in.tokens()
                         .map(e-> e.replaceFirst("\r","")) //remove weird \r behavior
                         .map(Victim::new)
-                        .toList();
+                        .collect(Collectors.toCollection(ArrayList::new));
             }
 
         } catch (IOException e) {
@@ -121,8 +122,8 @@ public class FileHandler {
      * @return
      * List of type string containing questions
      */
-    public static List<String> importQuestions(){
-        List<String> list = new ArrayList<>();
+    public static ArrayList<String> importQuestions(){
+        ArrayList<String> list = new ArrayList<>();
         try {
             var in = new Scanner(Path.of("Questions.txt"));
             // questions delimited by \n
@@ -131,7 +132,7 @@ public class FileHandler {
             // tokenize the file and then put those questions to a list
             list = in.tokens()
                     .map(e-> e.replaceFirst("\r", "")) //remove weird \r that appears
-                    .toList(); //collects to list
+                    .collect(Collectors.toCollection(ArrayList::new)); //collects to ArrayList
         } catch (IOException e){
             System.err.println("Error importing Questions.txt");
             e.printStackTrace();
