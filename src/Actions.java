@@ -18,7 +18,8 @@ public class Actions {
         v.addAbsence();
         vPanel.updateVictimPanel();
     }
-
+    // removes an absence from a victim
+    // typically used when a victim is accidentally marked absent
     public static void unmarkAbsent (Victim victim, VictimPanel victimPanel){
         victim.removeAbsence();
         victimPanel.updateVictimPanel();
