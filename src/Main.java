@@ -11,45 +11,27 @@ import java.util.Timer;
  */
 public class Main {
     public static void main(String[] args) {
-
-        // TODO: Replace with a file import
-        String[] names = {"Channing Andrews", "Danny Barmanbekov", "Nate Benson", "Nate Bittle",
-                "Excalibur Bunker", "Vincent Climer", "Nicholas Colet", "Fabrice Faustin", "Seth Garner",
-                "Nicholas Gilleran", "Hunter Henderson", "Akhil John Bosco", "Jeremiah Jordan", "Bret Kagebein",
-                "Owen Kiilsgaard", "Chuckie Koch", "Reagan Kohler", "Jace Kramer", "Levi Landers",
-                "Abraham Martinez Brito", "Chandler Mason", "Matthew McCallister", "Connor Myers",
-                "Oluwatobiloba Olaoye", "Connor Parr", "Markie Salzwedel", "Canon Shaw", "Gavin Smith",
-                "Josh Stapera", "Justin Stauffer", "Kevin Stinnett", "Ethan Stucker", "Dakotah Sutton-Rodriguez",
-                "Heather Watson"};
-
-        Random rand = new Random(); // purpose??
-
-        /*Create new arraylist of students and store each name from roster in array
-            Each student in the roster is randomly generated a number of picks
-            to test the sorting algorithm used in the 'chooseTwo' method of the
-            Victims class
-        */
-        ArrayList<Victim> students = new ArrayList<>();
-        for (String name : names) {
-            students.add(new Victim(name));     //instantiates new victim objects
-            //students.get(i).setNumberOfPicks(rand.nextInt(10));
-        }
-
+//TODO: DELETE ALL UNUSED CODE!!!!!!
         // Create a ScoreboardPanel instance
         //ScoreboardPanel scoreboardPanel = new ScoreboardPanel(students);
 
         // Driver objects
         VictimPicker victimPicker = new VictimPicker(); // main driver for everything
+        Actions.importVictims(victimPicker); // load victims into victim picker
 
+        QuestionPicker questionPicker = new QuestionPicker();
+        Actions.importQuestions(questionPicker);
         // Text display objects
         VictimLabel victimLabel = new VictimLabel(); // name of victim
         TimerLabel timerLabel = new TimerLabel(); // text for timer
 
-        // Interactable objects
-        VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
-        //ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel, timerLabel, scoreboardPanel); // add point, remove point, timer buttons
-        VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
+        //TODO: Determine if these are used anymore
+//        // Interactable objects
+//        VictimButton button = new VictimButton(victimPicker, victimLabel, students); // pick a victim button
+//        //ButtonsPanel panel = new ButtonsPanel(victimPicker, victimLabel, timerLabel, scoreboardPanel); // add point, remove point, timer buttons
+//        VolunteerComboBox volunteer = new VolunteerComboBox(names, victimPicker, students, victimLabel); // dropdown menu for selecting volunteer
 
+        // TODO: Determine if these are used anymore
         // Add them to a central frame
         Frame frame = new Frame();
 
@@ -63,7 +45,7 @@ public class Main {
 
 
         //Creating scoreboard components
-        ScoreboardPanel scoreboardPanel = new ScoreboardPanel(students);
+        ScoreboardPanel scoreboardPanel = new ScoreboardPanel(victimPicker);
         ScoreboardFrame scoreboardFrame = new ScoreboardFrame(scoreboardPanel);
         ScoreboardButton scoreboardButton = new ScoreboardButton(scoreboardFrame);
         scoreboardPanel.setScoreboardButton(scoreboardButton);
@@ -90,9 +72,9 @@ public class Main {
 
 
         ExportButton exportButton = new ExportButton(victimPicker);
-        ImportButton importButton = new ImportButton();
+        ImportButton importButton = new ImportButton(victimPicker, questionPicker);
         QuestionsLabel questionsLabel = new QuestionsLabel();
-        QuestionsButton questionsButton = new QuestionsButton(questionsLabel);
+        QuestionsButton questionsButton = new QuestionsButton(questionsLabel, questionPicker);
         PrizePanel prizePanel = new PrizePanel();
 
         frame.add(exportButton);
