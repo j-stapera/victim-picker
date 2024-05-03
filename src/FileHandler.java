@@ -28,7 +28,8 @@ public class FileHandler {
             // get first line
             // if first line is an L then it is program generated list
             // else user generated
-            if (in.nextLine().equals("L")) {
+            String firstLine = in.nextLine();
+            if (firstLine.equals("L")) {
                 // program generated list handling
                 // program generated
                 // each item in this array is a victim and their corresponding data
@@ -103,6 +104,8 @@ public class FileHandler {
             // user generated
             // line containing student first and last name, delimited by \n
             } else {
+                // first line is a victim, adds victim to victim list
+                victimList.add(new Victim(firstLine));
                 victimList = in.tokens()
                         .map(e-> e.replaceFirst("\r","")) //remove weird \r behavior
                         .map(Victim::new)
