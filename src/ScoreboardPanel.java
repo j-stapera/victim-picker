@@ -6,11 +6,14 @@ import java.util.Comparator;
 
 public class ScoreboardPanel extends JPanel {
 
+    //instance variables
     private VictimPicker victimPicker;
     private ScoreboardButton sbButton;
 
+    //constructor
     ScoreboardPanel(VictimPicker vp) {
         this.victimPicker = vp;
+        //setting layout
         setLayout(new BorderLayout());
 
         // Create and initialize the scoreboard components
@@ -49,7 +52,7 @@ public class ScoreboardPanel extends JPanel {
         // Set the text of the scoreboard
         ((JTextArea) ((JScrollPane) getComponent(0)).getViewport().getView()).setText(scoreboardText.toString());
     }
-
+    //this is necessary to toggle the button back on when the scoreboard is closed
     //Class needs a reference to the scoreboard button so it can toggle it
     //back on when the scoreboard is closed
     void setScoreboardButton(ScoreboardButton sbButton){
