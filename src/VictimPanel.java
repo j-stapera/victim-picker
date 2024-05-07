@@ -59,9 +59,10 @@ public class VictimPanel extends JPanel {
         //SET LOCAL VARIABLES SO THAT ALL STATEMENTS CAN BE COPIED AND PASTED
         int localX = 0, localY = 0, localWidth = 0, localHeight = 0;
 
-        //Setting Bounds of Frame
+        //calculating positions and sizes of components based on the number of VictimPanel
         switch(number)
         {
+            //cases for different positions of VictimPanel
             case 1 : //1 victim on screen
                 localX = TopLeftCornerX;
                 localY = TopLeftCornerY;
@@ -166,7 +167,7 @@ public class VictimPanel extends JPanel {
 
 
     }
-
+    //setters and getters for accessing and modifying VictimPanel attributes
     public VictimPicker getVictimPicker() {
         return victimPicker;
     }
