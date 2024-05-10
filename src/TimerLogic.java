@@ -35,7 +35,7 @@ public class TimerLogic {
                     timerLabel.endTime(currTime);
                     timer.stop();
 
-                    AudioPlayer.playAudio("alarm.wav");
+                    AudioPlayer.playAudio("Resources\\alarm.wav");
 
                 }
             }
