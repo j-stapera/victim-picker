@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Actions {
@@ -31,13 +32,13 @@ public class Actions {
     }
 
 
-
-
-    public static void toggleTimer(TimerLogic tl) {
+    public static void toggleTimer(TimerLogic tl, JButton startButton) {
         if (tl.isRunning()) {
             tl.stopTimer();
+            startButton.setText("<html>Start<br/>Timer<html/>");
         } else {
             tl.startTimer();
+            startButton.setText("<html>Stop<br/>Timer<html/>");
         }
     }
 
