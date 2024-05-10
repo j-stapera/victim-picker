@@ -22,6 +22,7 @@ public class VictimPanel extends JPanel {
     private Victim victim = new Victim("Pick Victim");
 
     private PickVictimButton pickVictimButton;
+    private MarkAbsentButton markAbsentButton;
 
     //These values are dependent on the size of the VictimPanel Square (the space in which all victim panels reside)
     private final int TwoThreeFourPanelWidth = (OnePanelWidth/2) - PanelDistance;
@@ -52,7 +53,7 @@ public class VictimPanel extends JPanel {
         this.sbPanel = sbPanel;     //addpoint/removepoint take scoreboard panel so that scoreboard can be updated when they are clicked
         AddPointButton addPointButton = new AddPointButton(this, sbPanel);
         RemovePointButton removePointButton = new RemovePointButton(this, sbPanel);
-        MarkAbsentButton markAbsentButton = new MarkAbsentButton(this);
+        markAbsentButton = new MarkAbsentButton(this);
         pickVictimButton = new PickVictimButton(this);
         pickVictimButton.setFont(new Font("Times New Roman", Font.PLAIN,18));
 
@@ -181,13 +182,14 @@ public class VictimPanel extends JPanel {
         return victim;
     }
 
-    public void updatePoints(){
-        pointsText.setText("Points: " + victim.getScore());
-    }
-
     public void updateVictimPanel() {
         pointsText.setText("Points: " + victim.getScore());
         pickVictimButton.setText(victim.getName());
+    }
+
+    public void resetButtons(){
+        markAbsentButton.reset();
+
     }
 
 

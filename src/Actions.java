@@ -29,6 +29,7 @@ public class Actions {
     public static void selectVictim(VictimPicker vp, VictimPanel vPanel) {
         vPanel.setVictim(vp.chooseVictim());
         vPanel.updateVictimPanel();
+        vPanel.resetButtons();
     }
 
 
