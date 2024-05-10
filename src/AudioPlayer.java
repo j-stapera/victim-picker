@@ -19,14 +19,14 @@ public class AudioPlayer {
             } else {
 
                 //For debugging purposes
-                System.out.println("Audio file not found");
+                throw new RuntimeException("Audio file not found. Location: " + location);
 
             }
 
         } catch (Exception e) {
 
             //This program doesn't accept user input if its broken debug
-            System.out.println("Something went wrong check file type, use .wav only");
+            System.err.println(e + "\nPlease check file location, name, and type is correct");
 
         }
     }
