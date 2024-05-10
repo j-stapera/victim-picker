@@ -15,7 +15,7 @@ public class VictimPanel extends JPanel {
     private final int TopLeftCornerX = 220;
     private final int TopLeftCornerY = 100;
 
-    private VolunteerList volunteer;
+    private VolunteerList volunteerDropBox;
     private JLabel pointsText;
     private final int number;
 
@@ -40,7 +40,7 @@ public class VictimPanel extends JPanel {
         this.number = num;
         victimPicker = vp;
 
-        //need to get names from victimPicker then upload into volunteer box
+        //need to get names from victimPicker then upload into volunteerDropBox box
         String names[] = {"ruh", "moment", "epic", "gemera"};
 
 
@@ -157,11 +157,11 @@ public class VictimPanel extends JPanel {
         this.add(pickVictimButton);
         this.add(pointsText);
 
-        //Add volunteer dropbox components
-        volunteer = new VolunteerList(vp, this);
-        volunteer.setFocusable(false);
-        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
-        this.add(volunteer);
+        //Add volunteerDropBox dropbox components
+        volunteerDropBox = new VolunteerList(vp, this);
+        volunteerDropBox.setFocusable(false);
+        volunteerDropBox.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
+        this.add(volunteerDropBox);
 
         //Set intial text of the pick victim button to 'Pick Victim'
         pickVictimButton.setText("Pick Victim");
@@ -189,7 +189,7 @@ public class VictimPanel extends JPanel {
 
     public void resetButtons(){
         markAbsentButton.reset();
-
+        volunteerDropBox.setSelectedIndex(-1);
     }
 
 
