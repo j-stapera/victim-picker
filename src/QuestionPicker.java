@@ -39,18 +39,24 @@ public class QuestionPicker {
 
     public String getPreviousQuestion(){
 
-        // if we have reached the end of the questions
-        if (alreadyAnswered.size() == questions.size()){
-            return currQuestion;
+
+
         // if we are in the middle of the questions
-        } else if (alreadyAnswered.size() > 1){
+        if (alreadyAnswered.size() > 1){
             onPreviousQuestion = true;
+
             // subtract 2, 1 because indexes count from zero, and 1 to get the previous index
             int previousIndex = alreadyAnswered.size() - 2;
             return alreadyAnswered.get(previousIndex);
+        } else {
+            // we have reached the end of the questions
+            // OR
+            // currQuestion is our previous question
+            // "No more Questions" is currently displayed
+
+            // either way, return currQuestion
+            return currQuestion;
         }
-        // there is no previous question, return current instead
-        return currQuestion;
     }
 
     public void loadQuestions(ArrayList<String> questions){
