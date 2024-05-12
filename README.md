@@ -66,6 +66,8 @@ or <br>
 Ensure that the file paths and names are correctly set as the application expects Questions.txt, Victims.txt, and alarm.wav in the specific format mentioned.
 The application is designed to handle exceptions and user errors, but proper file formats must be maintained for optimal performance.
 
+This repo is now archived and will be maintained by each contributor individually. Any bugs present or specific features will no longer be fixed or added to this repo.
+
 ---
 ### Contributors
 - (Design Team) Channing Andrews, Fabrice Faustin, Abraham Martinez Brito
