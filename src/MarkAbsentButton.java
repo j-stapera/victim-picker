@@ -16,6 +16,11 @@ public class MarkAbsentButton extends JButton implements ActionListener {
         markedAbsent = false;
 
     }
+
+    public void reset(){
+        markedAbsent = false;
+        thisButton.setText("Mark Absent");
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!victimPanel.getVictim().getName().equals("Pick Victim")) {

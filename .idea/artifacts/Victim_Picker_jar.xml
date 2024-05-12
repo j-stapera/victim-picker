@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Victim-Picker:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Victim_Picker_jar</output-path>
+    <root id="archive" name="Victim-Picker.jar">
+      <element id="module-output" name="Victim-Picker" />
+    </root>
+  </artifact>
+</component>

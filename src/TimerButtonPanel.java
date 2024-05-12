@@ -59,7 +59,7 @@ public class TimerButtonPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startTimerButton) {
-            Actions.toggleTimer(timerLogic);
+            Actions.toggleTimer(timerLogic, startTimerButton);
         }
         if (e.getSource() == addTimeButton) {
             Actions.addTime(timerLogic);

@@ -23,7 +23,7 @@ public class FileHandler {
 
         ArrayList<Victim> victimList = new ArrayList<>();
         try {
-            var in = new Scanner(Path.of("Victims.txt"));
+            var in = new Scanner(Path.of("Resources\\Victims Files\\Victims.txt"));
             in.useDelimiter("\n");
             // get first line
             // if first line is an L then it is program generated list
@@ -128,7 +128,7 @@ public class FileHandler {
     public static ArrayList<String> importQuestions(){
         ArrayList<String> list = new ArrayList<>();
         try {
-            var in = new Scanner(Path.of("Questions.txt"));
+            var in = new Scanner(Path.of("Resources\\Question Files\\Questions.txt"));
             // questions delimited by \n
             in.useDelimiter("\n");
 
@@ -147,8 +147,8 @@ public class FileHandler {
     // currently only exports the victim data
     public static void Export(ArrayList<String> exportList) {
 
-        File newFile = new File("Victims.txt");
-        File oldFile = new File("OldVictims-" + Instant.now().getEpochSecond() + ".txt"); //appends date in seconds
+        File newFile = new File("Resources\\Victims Files\\Victims.txt");
+        File oldFile = new File("Resources\\Victims Files\\Old\\OldVictims-" + Instant.now().getEpochSecond() + ".txt"); //appends date in seconds
                                                                                                     // this will need to be improved - Josh
 
         // if Victims.txt already exists, move that data to oldVictims-{seconds}.txt

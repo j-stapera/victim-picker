@@ -15,13 +15,14 @@ public class VictimPanel extends JPanel {
     private final int TopLeftCornerX = 220;
     private final int TopLeftCornerY = 100;
 
-    private VolunteerList volunteer;
+    private VolunteerList volunteerDropBox;
     private JLabel pointsText;
     private final int number;
 
     private Victim victim = new Victim("Pick Victim");
 
     private PickVictimButton pickVictimButton;
+    private MarkAbsentButton markAbsentButton;
 
     //These values are dependent on the size of the VictimPanel Square (the space in which all victim panels reside)
     private final int TwoThreeFourPanelWidth = (OnePanelWidth/2) - PanelDistance;
@@ -39,7 +40,7 @@ public class VictimPanel extends JPanel {
         this.number = num;
         victimPicker = vp;
 
-        //need to get names from victimPicker then upload into volunteer box
+        //need to get names from victimPicker then upload into volunteerDropBox box
         String names[] = {"ruh", "moment", "epic", "gemera"};
 
 
@@ -52,7 +53,7 @@ public class VictimPanel extends JPanel {
         this.sbPanel = sbPanel;     //addpoint/removepoint take scoreboard panel so that scoreboard can be updated when they are clicked
         AddPointButton addPointButton = new AddPointButton(this, sbPanel);
         RemovePointButton removePointButton = new RemovePointButton(this, sbPanel);
-        MarkAbsentButton markAbsentButton = new MarkAbsentButton(this);
+        markAbsentButton = new MarkAbsentButton(this);
         pickVictimButton = new PickVictimButton(this);
         pickVictimButton.setFont(new Font("Times New Roman", Font.PLAIN,18));
 
@@ -156,11 +157,11 @@ public class VictimPanel extends JPanel {
         this.add(pickVictimButton);
         this.add(pointsText);
 
-        //Add volunteer dropbox components
-        volunteer = new VolunteerList(vp, this);
-        volunteer.setFocusable(false);
-        volunteer.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
-        this.add(volunteer);
+        //Add volunteerDropBox dropbox components
+        volunteerDropBox = new VolunteerList(vp, this);
+        volunteerDropBox.setFocusable(false);
+        volunteerDropBox.setBounds((localWidth/32),(int)(localHeight/1.3),(int)(localWidth/3.2),(int)(localHeight/10.8));
+        this.add(volunteerDropBox);
 
         //Set intial text of the pick victim button to 'Pick Victim'
         pickVictimButton.setText("Pick Victim");
@@ -181,13 +182,14 @@ public class VictimPanel extends JPanel {
         return victim;
     }
 
-    public void updatePoints(){
-        pointsText.setText("Points: " + victim.getScore());
-    }
-
     public void updateVictimPanel() {
         pointsText.setText("Points: " + victim.getScore());
         pickVictimButton.setText(victim.getName());
+    }
+
+    public void resetButtons(){
+        markAbsentButton.reset();
+        volunteerDropBox.setSelectedIndex(-1);
     }
 
 

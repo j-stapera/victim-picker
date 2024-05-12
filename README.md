@@ -65,3 +65,9 @@ or <br>
 # Notes
 Ensure that the file paths and names are correctly set as the application expects Questions.txt, Victims.txt, and alarm.wav in the specific format mentioned.
 The application is designed to handle exceptions and user errors, but proper file formats must be maintained for optimal performance.
+
+---
+### Contributors
+- (Design Team) Channing Andrews, Fabrice Faustin, Abraham Martinez Brito
+- (Front End) Connor Myers, Jace Kramer, Nicholas Gilleran, Owen Kiilsgaard
+- (Back  End) Joshua Stapera, Markie Salzwedel, Heather Watson, Canon Shaw
